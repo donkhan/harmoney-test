@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class LoginTest {
 
 	public static void main(String args[]) throws ClientProtocolException, IOException{
-		LoginTest lt = new LoginTest("vteial","");
+		LoginTest lt = new LoginTest("hnawas","123");
 		lt.login();
 	}
 	
@@ -29,7 +29,7 @@ public class LoginTest {
 	}
 	
 	public String login() throws ClientProtocolException, IOException{
-		String url = "http://localhost:8181/harmoney2/sessionService/authenticate";
+		String url = "http://101.99.73.46:9181/harmoney2/sessionService/authenticate";
 
 		HttpClient client = new DefaultHttpClient();
 		HttpPost request = new HttpPost(url);

@@ -17,12 +17,15 @@ import org.json.JSONObject;
 public class TransactionTest {
 	
 	private List<Transaction> transactions;
+	private String userName;
+	
 	public static void main(String args[]) throws ClientProtocolException, IOException{
 		
 	}
 	
-	public TransactionTest(List<Transaction> transactions){
+	public TransactionTest(List<Transaction> transactions,String userName){
 		this.transactions = transactions;
+		this.userName = userName;
 	}
 	
 	private void setReceipt(JSONObject request){
@@ -84,7 +87,7 @@ public class TransactionTest {
 		
 		System.out.println(payLoad.toString(2));
 		
-		String url = "http://localhost:8181//harmoney2/tranReceiptCounters/tranReceiptCounter";
+		String url = "http://101.99.73.46:9181/harmoney2/tranReceiptCounters/tranReceiptCounter";
 
 		HttpClient client = new DefaultHttpClient();
 		HttpPost request = new HttpPost(url);
@@ -92,7 +95,7 @@ public class TransactionTest {
 		request.addHeader("Content-Type","application/json;charset=UTF-8");
 		request.addHeader("User-Agent", "STANDALONE_CODE");
 		request.addHeader("Accept","application/json");
-		request.addHeader("X-userId","vteial");
+		request.addHeader("X-userId",userName);
 		request.addHeader("Cookie","JSESSIONID="+sessionId);
 		
 		System.out.println("Session ID " + sessionId);
