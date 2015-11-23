@@ -20,8 +20,8 @@ public class MainThread extends Thread implements Runnable{
 		LoginTest test = new LoginTest(userName,passWord);
 		try {
 			String sessionId = test.login();
-			TransactionTest stest = new TransactionTest(transactions,userName);
-			stest.execute(sessionId);
+			TransactionTest stest = new TransactionTest(transactions,userName,sessionId);
+			stest.executeTransactions();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

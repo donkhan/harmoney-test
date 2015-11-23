@@ -14,18 +14,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class TransactionTest {
+public class TransactionTest extends BaseTest{
 	
 	private List<Transaction> transactions;
 	private String userName;
+	private String sessionId;
 	
 	public static void main(String args[]) throws ClientProtocolException, IOException{
 		
 	}
 	
-	public TransactionTest(List<Transaction> transactions,String userName){
+	public TransactionTest(List<Transaction> transactions,String userName,String sessionId){
 		this.transactions = transactions;
 		this.userName = userName;
+		this.sessionId = sessionId;
 	}
 	
 	private void setReceipt(JSONObject request){
@@ -79,34 +81,8 @@ public class TransactionTest {
 		return total;
 	}
 	
-	public void execute(String sessionId) throws ClientProtocolException, IOException{
-		
-		JSONObject payLoad = new JSONObject();
-		setReceipt(payLoad);
-		setRiskAnalysis(payLoad);
-		
-		System.out.println(payLoad.toString(2));
-		
-		String url = "http://101.99.73.46:9181/harmoney2/tranReceiptCounters/tranReceiptCounter";
-
-		HttpClient client = new DefaultHttpClient();
-		HttpPost request = new HttpPost(url);
-		
-		request.addHeader("Content-Type","application/json;charset=UTF-8");
-		request.addHeader("User-Agent", "STANDALONE_CODE");
-		request.addHeader("Accept","application/json");
-		request.addHeader("X-userId",userName);
-		request.addHeader("Cookie","JSESSIONID="+sessionId);
-		
-		System.out.println("Session ID " + sessionId);
-		
-		//{"totalAmount":-3.24,"customerAmount":0,"balanceAmount":3.24,"accountId":0,"purpose":"","description":"","transactions":[{"exchangeRateId":52,"currencyId":"USD","baseUnit":1,"type":"B","exchangeUnit":1,"exchangeRate":3.24,"amount":3.24}],"totalSaleAmount":3.24}
-		
-		String counterPayLoad = payLoad.toString(2);
-		
-		request.setEntity(new StringEntity(counterPayLoad));
-		HttpResponse response = client.execute(request);
-
+	public void executeTransactions() throws ClientProtocolException, IOException{
+		HttpResponse response = super.execute();
 		System.out.println("Response Code : " 
 	                + response.getStatusLine().getStatusCode());
 
@@ -121,6 +97,26 @@ public class TransactionTest {
 		System.out.println(result);
 
 	}
+
+	@Override
+	public JSONObject getPayLoad() {
+		JSONObject payLoad = new JSONObject();
+		setReceipt(payLoad);
+		setRiskAnalysis(payLoad);
+		return payLoad;
+	}
+
+	@Override
+	public String getURI() {
+		return "/harmoney2/tranReceiptCounters/tranReceiptCounter";
+	}
+
+	@Override
+	public void addExtraHeaders(HttpPost request) {
+		request.addHeader("X-userId",userName);
+		request.addHeader("Cookie","JSESSIONID="+sessionId);
+	}
+	
 	
 	
 }

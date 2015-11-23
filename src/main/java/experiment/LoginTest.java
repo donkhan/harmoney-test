@@ -7,18 +7,11 @@ import java.io.InputStreamReader;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-public class LoginTest {
+public class LoginTest extends BaseTest{
 
-	public static void main(String args[]) throws ClientProtocolException, IOException{
-		LoginTest lt = new LoginTest("hnawas","123");
-		lt.login();
-	}
 	
 	private String userName;
 	private String passWord;
@@ -28,25 +21,19 @@ public class LoginTest {
 		this.passWord = passWord;
 	}
 	
-	public String login() throws ClientProtocolException, IOException{
-		String url = "http://101.99.73.46:9181/harmoney2/sessionService/authenticate";
+	
 
-		HttpClient client = new DefaultHttpClient();
-		HttpPost request = new HttpPost(url);
-
+	@Override
+	public JSONObject getPayLoad() {
 		JSONObject user = new JSONObject();
 		user.accumulate("id",userName);
 		user.accumulate("password",passWord);
-		
-		request.addHeader("Content-Type","application/json;charset=UTF-8");
-		request.addHeader("User-Agent", "STANDALONE_CODE");
-		request.addHeader("Accept","application/json");
+		return user;
+	}
 
-		String loginContent = user.toString();
-		
-		request.setEntity(new StringEntity(loginContent));
-		HttpResponse response = client.execute(request);
-
+	
+	public String login() throws ClientProtocolException, IOException{
+		HttpResponse response = execute();
 		System.out.println("Response Code : " 
 	                + response.getStatusLine().getStatusCode());
 
@@ -70,5 +57,18 @@ public class LoginTest {
 			}
 		}
 		return "";
+	}
+
+	@Override
+	public String getURI() {
+		return "/harmoney2/sessionService/authenticate";
+	}
+
+
+
+	@Override
+	public void addExtraHeaders(HttpPost request) {
+		// TODO Auto-generated method stub
+		
 	}
 }
