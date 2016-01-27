@@ -47,11 +47,26 @@
 		<br>
 		<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/LoginTest.java> Test Program </a> <br>
 		<u> How to extract Session ID from the request Headers </u>
-			<ul>
-				<li> Iterate over all http headers </li>
-				<li> If header name is Set-Cookie, grab the value and retrieve session id as value.substring(value.indexOf("=")+1,value.indexOf(";")); 
-			</ul>
-	<br>
+		<ul>
+			<li> Iterate over all http headers </li>
+			<li> If header name is Set-Cookie, grab the value and retrieve session id. 
+		</ul>
+		<u>Sample HTTP Headers </u> <br>
+		POST /harmoney2/sessionService/authenticate HTTP/1.1<br>
+Host: localhost:8181<br>
+Connection: keep-alive<br>
+Content-Length: 28<br>
+Accept: application/json, text/plain, */*<br>
+X-UserId: null<br>
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36<br>
+Origin: http://localhost:8181<br>
+Content-Type: application/json;charset=UTF-8<br>
+DNT: 1<br>
+Referer: http://localhost:8181/harmoney2/index<br>
+Accept-Encoding: gzip, deflate<br>
+Accept-Language: en-US,en;q=0.8<br>
+<b>Cookie: JSESSIONID=534532C75EB9B38383D29D944E38AAE3</b>	
+	<br><br><br>
 	
 	<b><u> Logout </u></b><br><br>
 		URL : /harmoney2/sessionService/logout <br>
