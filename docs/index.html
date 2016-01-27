@@ -5,8 +5,13 @@
 <title>Documentation for MOOSE API Integration</title>
 </head>
 <body>
+	<b> Test Program(s) Repository: https://github.com/donkhan/harmoney-test</b> <br><br>
+	For All Programs Moose should login to money box, get the session id and append it with the HTTP Header 
+	for subsequent Operations on the money box system.
+	Please refer BaseGETTest.java <br><br>
+	
 	<br> 
-	<b> Getting Stocks for given Branch and Currency</b> <br> <br> 
+	<b> <u>1.Getting Stocks for given Branch and Currency </u></b> <br> <br> 
 	<b> URL : /harmoney2/get-stocks/{branch-name}/{currency}</b> <br><br>
 	<b> HTTP Method: GET</b> <br><br>
 	<b> Payload: None</b> <br><br>
@@ -24,11 +29,11 @@
       }<br>
    ]<br>
 }</b> <br><br>
-	<b> Error Code :  </b> <br><br>
+	<b> Error Code(s) :  </b> <br><br>
 		0 - Success 
 		1 - Branch Not Present
 		2 - Currency Not Present </b> <br><br>
 	<b> Example : /harmoney2/get-stocks/Trichy/USD </b> <br><br>
-	<b> Test Program For reference: MooseGETTest.java, MooseTestThread.java </b> <br><br>
+	<b> Test Program For reference: MooseTestProgram.java </b> <br><br>
 </body>
 </html>
