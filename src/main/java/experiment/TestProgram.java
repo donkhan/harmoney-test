@@ -7,11 +7,11 @@ public class TestProgram {
 
 	
 	public static void main(String args[]){
-		String[] userNames = new String[]{"shaik"};
-		String[] passWords = new String[]{"123"};
+		String[] userNames = new String[]{"vteial"};
+		String[] passWords = new String[]{"1"};
 		
 		Transaction[] transactions = new Transaction[]{
-			new Transaction("B",9118,"USD",1,3.82,1),
+			new Transaction("B",52,"USD",1,3.82,1),
 
 		};
 		

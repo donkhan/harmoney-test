@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Documentation for MOOSE API Integration</title>
+</head>
+<body>
+	<br> 
+	<b> Getting Stocks for given Branch and Currency</b> <br> <br> 
+	<b> URL : /harmoney2/get-stocks/{branch-name}/{currency}</b> <br><br>
+	<b> HTTP Method: GET</b> <br><br>
+	<b> Payload: None</b> <br><br>
+	<b> Sample Output : <br>{  <br>
+   "code":0, <br>
+   "description":"Success", <br>
+   "data":[  <br>
+      {  <br>
+         "name":"Branch", <br>
+         "totalStocks":23421.2 <br>
+      },<br>
+      {  <br>
+         "name":"Tellers",<br>
+         "totalStocks":12312<br>
+      }<br>
+   ]<br>
+}</b> <br><br>
+	<b> Error Code :  </b> <br><br>
+		0 - Success 
+		1 - Branch Not Present
+		2 - Currency Not Present </b> <br><br>
+	<b> Example : /harmoney2/get-stocks/Trichy/USD </b> <br><br>
+	<b> Test Program For reference: MooseGETTest.java, MooseTestThread.java </b> <br><br>
+</body>
+</html>
