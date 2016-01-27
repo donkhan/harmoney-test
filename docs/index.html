@@ -8,9 +8,8 @@
 	<br><b><u> Preface </u></b><br><br>
 		This document describes the REST End Points provided by Money Box Application for external applications to communicate. 
 		To Execute REST call's, External application <u> must login </u> to Money Box using valid Login Credentials.
-		We provide Test Programs for reference Written in Java. External applications which are being developed using different programming languages, 
-		they can use these programs as reference. In case they are written in Java, they can use these source code as it is. These test programs are available in the
-	    following <a href=https://github.com/donkhan/harmoney-test>Repository.</a></b> There is no URL available in MoneyBox to advertise all the End Points it is providing.
+		We provide Test Programs for reference written in Java. External applications which are being developed using different programming languages can use these programs 
+		as reference.In case they are written in Java, they can use these source code as it is. These test programs are available here <a href=https://github.com/donkhan/harmoney-test>Repository.</a></b> There is no URL available in MoneyBox to advertise all the End Points it is providing.
 	    <br><br>
 	
 	<b><u> Please Note that Money Box is running in http now. </u></b> 
@@ -38,7 +37,7 @@
 		 <li>Cookie = JSESSIONID= + {Session ID received from login request} </li>
 		</ul>
 		
-	<br><br>
+	<br>
 	<b><u> Login </u></b><br><br>
 		URL : /harmoney2/sessionService/authenticate <br>
 		HTTP Method: POST <br>
@@ -52,7 +51,7 @@
 				<li> Iterate over all http headers </li>
 				<li> If header name is Set-Cookie, grab the value and retrieve session id as value.substring(value.indexOf("=")+1,value.indexOf(";")); 
 			</ul>
-	<br><br>
+	<br>
 	
 	<b><u> Logout </u></b><br><br>
 		URL : /harmoney2/sessionService/logout <br>
