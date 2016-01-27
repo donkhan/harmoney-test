@@ -5,35 +5,81 @@
 <title>Documentation for MOOSE API Integration</title>
 </head>
 <body>
-	<b> Test Program(s) Repository: https://github.com/donkhan/harmoney-test</b> <br><br>
-	For All Programs Moose should login to money box, get the session id and append it with the HTTP Header 
-	for subsequent Operations on the money box system.
-	Please refer BaseGETTest.java <br><br>
+	<br><b><u> Preface </u></b><br><br>
+		This document describes the REST End Points provided by Money Box Application for external applications to communicate. 
+		To Execute REST call's, External application <u> must login </u> to Money Box using valid Login Credentials.
+		We provide Test Programs for reference Written in Java. External applications which are being developed using different programming languages, 
+		they can use these programs as reference. In case they are written in Java, they can use these source code as it is. These test programs are available in the
+	    following <a href=https://github.com/donkhan/harmoney-test>Repository.</a></b> There is no URL available in MoneyBox to advertise all the End Points it is providing.
+	    <br><br>
 	
+	<b><u> Please Note that Money Box is running in http now. </u></b> 
+	<br><br>
+	
+	<b><u> Procedure to access the Money Box Resources </u></b><br>
+	
+	<ul>
+  		<li>Login to Money Box using Valid login credentials </li>
+  		<li>Grab the Session id received from the authentication call from HTTP Headers</li>
+  		<li>For Every Subsequent Request to money box for resource access, add Session Id and X-UserId in the HTTP Headers</li>
+  		<li>Logout once all operations are done.
+	</ul>
+	
+	<b><u> Request Headers </u></b><br><br>
+		The following parameters should be added to all the requests from the external application to MoneyBox
+		<ul>
+		 <li>Content-Type = application/json;charset=UTF-8 </li>
+		 <li>User-Agent =STANDALONE_CODE </li>
+		 <li>Accept = application/json </li>
+		</ul> 
+		<br>Except Login Request, all other requests should have the following additional headers.
+		<ul>
+		 <li>X-userId = User ID </li>
+		 <li>Cookie = JSESSIONID= + {Session ID received from login request} </li>
+		</ul>
+		
+	<br><br>
+	<b><u> Login </u></b><br><br>
+		URL : /harmoney2/sessionService/authenticate <br>
+		HTTP Method: POST <br>
+		Payload: {
+				id: User Id, password : password
+			}
+		<br>
+		<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/LoginTest.java> Test Program </a> <br>
+		<u> How to extract Session ID from the request Headers </u>
+			<ul>
+				<li> Iterate over all http headers </li>
+				<li> If header name is Set-Cookie, grab the value and retrieve session id as value.substring(value.indexOf("=")+1,value.indexOf(";")); 
+			</ul>
+	<br><br>
+	
+	<b><u> Logout </u></b><br><br>
+		URL : /harmoney2/sessionService/logout <br>
+		HTTP Method: GET <br>
+		Payload: None <br>
+		<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/LogoutTest.java> Test Program </a> <br>
 	<br> 
-	<b> <u>1.Getting Stocks for given Branch and Currency </u></b> <br> <br> 
-	<b> URL : /harmoney2/get-stocks/{branch-name}/{currency}</b> <br><br>
-	<b> HTTP Method: GET</b> <br><br>
-	<b> Payload: None</b> <br><br>
-	<b> Sample Output : <br>{  <br>
-   "code":0, <br>
-   "description":"Success", <br>
-   "data":[  <br>
-      {  <br>
-         "name":"Branch", <br>
-         "totalStocks":23421.2 <br>
-      },<br>
-      {  <br>
-         "name":"Tellers",<br>
-         "totalStocks":12312<br>
-      }<br>
-   ]<br>
-}</b> <br><br>
-	<b> Error Code(s) :  </b> <br><br>
+	
+	<b> <u>Getting Stocks for given Branch and Currency </u> </b> <br> <br> 
+	URL : /harmoney2/get-stocks/{branch-name}/{currency} <br>
+	 HTTP Method: GET <br>
+	 Payload: None <br>
+	 Sample Output : <br> 
+        "data":{ "branchStocks": 120, "tellersStocks" : 1221, code : 0, description : "Success" } <br>
+	 Error Code(s) : 
 		0 - Success 
 		1 - Branch Not Present
-		2 - Currency Not Present </b> <br><br>
-	<b> Example : /harmoney2/get-stocks/Trichy/USD </b> <br><br>
-	<b> Test Program For reference: MooseTestProgram.java </b> <br><br>
+		2 - Currency Not Present </b> <br>
+	Example : /harmoney2/get-stocks/Trichy/USD  <br>
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTestProgram.java> Test Program </a> 
+	<br><br>
+	
+	<b> <u>Things to care </u> </b> <br> 
+		<ul> 
+			<li> Please Make sure to logout. </li>
+			<li> In case session timesout, user will be locked and it needs administrator intervention to unlock the user id.
+			<li> Multiple failed logins will result in account being locked.
+		</ul>
 </body>
 </html>
