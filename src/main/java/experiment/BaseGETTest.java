@@ -1,7 +1,6 @@
 package experiment;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -33,14 +32,8 @@ public abstract class BaseGETTest {
 		request.addHeader("User-Agent", "STANDALONE_CODE");
 		request.addHeader("Accept", "application/json");
 		addExtraHeaders(request);
-
 		HttpResponse response = client.execute(request);
-		System.out.println(response.getStatusLine().getStatusCode());
-		InputStream is = response.getEntity().getContent();
-		int j;
-		while(( j = is.read()) != -1){
-			System.out.print((char)j);
-		}
+		print(response);
 		return response;
 	}
 
@@ -59,4 +52,6 @@ public abstract class BaseGETTest {
 		request.addHeader("X-userId",userName);
 		request.addHeader("Cookie","JSESSIONID="+sessionId);
 	}
+	
+	public abstract void print(HttpResponse response) throws IOException;
 }
