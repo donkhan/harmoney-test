@@ -24,7 +24,6 @@ public class MooseGETTest extends BaseGETTest{
 	}
 	
 	public void print(HttpResponse response) throws IOException{
-		System.out.println(response.getStatusLine().getStatusCode());
 		InputStream is = response.getEntity().getContent();
 		int j;
 		while(( j = is.read()) != -1){
