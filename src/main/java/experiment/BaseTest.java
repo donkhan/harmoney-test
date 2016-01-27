@@ -12,8 +12,9 @@ import org.json.JSONObject;
 
 public abstract class BaseTest {
 
+	//private String server = "101.99.73.46";
 	private String server = "localhost";
-	private int port = 9181;
+	private int port = 8181;
 	
 	protected String getServer(){
 		return server;

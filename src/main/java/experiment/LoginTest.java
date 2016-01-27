@@ -45,6 +45,7 @@ public class LoginTest extends BaseTest{
 		while ((line = rd.readLine()) != null) {
 			result.append(line);
 		}
+		System.out.println(result);
 		Header[] headers = response.getAllHeaders();
 		for(Header header : headers){
 			System.out.println(header.getName() + "   " + header.getValue());
