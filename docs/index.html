@@ -8,11 +8,9 @@
 	<br><b><u> Preface </u></b><br><br>
 		This document describes the REST End Points provided by Money Box Application for external applications to communicate. 
 		To Execute REST call's, External application <u> must login </u> to Money Box using valid Login Credentials.
-		We provide Test Programs for reference written in Java. External applications which are being developed using different programming languages can use these programs 
-		as reference.In case they are written in Java, they can use these source code as it is. These test programs are available here <a href=https://github.com/donkhan/harmoney-test>Repository.</a></b> There is no URL available in MoneyBox to advertise all the End Points it is providing.
-	    <br><br>
-	
-	<b><u> Please Note that Money Box is running in http now. </u></b> 
+		We provide Test Programs for reference written in JAVA. External applications developed in other languages can use these programs 
+		as reference.These test programs are available <a href=https://github.com/donkhan/harmoney-test>here.</a></b> There is no advertising URL in MoneyBox.
+		Please Note that Money Box is running in http now.
 	<br><br>
 	
 	<b><u> Procedure to access the Money Box Resources </u></b><br>
@@ -80,7 +78,14 @@ Accept-Language: en-US,en;q=0.8<br>
 	 HTTP Method: GET <br>
 	 Payload: None <br>
 	 Sample Output : <br> 
-        "data":{ "branchStocks": 120, "tellersStocks" : 1221, code : 0, description : "Success" } <br>
+        {  <br>
+   "code":0,<br>
+   "description":"Success",<br>
+   "data":{  <br>
+      "branchStocks":9570.0,<br>
+      "tellerStocks":0.0<br>
+   }<br>
+}<br>
 	 Error Code(s) : <br> 
 		ALL_FINE = 0, <br>
 		BRANCH_NOT_FOUND = 1 <br>
@@ -93,11 +98,53 @@ Accept-Language: en-US,en;q=0.8<br>
 	<b> <u>Executing Transactions in MoneyBox from Moose </u> </b> <br> <br> 
 	URL : /harmoney2/harmoney2/moose-transaction/{branch-name} <br>
 	 HTTP Method: POST <br>
-	 Payload:  { "transactions" : [{"exchangeRate" : double,"currencyId": double, "exchangeUnit" : double }...]<br>
-	 Example : {"transactions":[{"exchangeRate":3,"currencyId":"USD","exchangeUnit":10},{"exchangeRate":5,"currencyId":"GBP","exchangeUnit":10}]}
+	 Payload:  <br>
+	 {  <br>
+   		"transactions":[ <br>  
+      	{  <br>
+         "exchangeRate":double,<br>
+         "currencyId":double,<br>
+         "exchangeUnit":double<br>
+      	}<br>
+   		]<br>
+	}<br>
+	 Example : <br>{<br>  
+   "transactions":[  <br>
+      {  <br>
+         "exchangeRate":3,<br>
+         "currencyId":"USD",<br>
+         "exchangeUnit":10<br>
+      },<br>
+      {  <br>
+         "exchangeRate":5,<br>
+         "currencyId":"GBP",<br>
+         "exchangeUnit":10<br>
+      }<br>
+   	]<br>
+	}
 	 <br>
 	 Sample Output : <br> 
-	    {"code":0,"description":"Transaction(s) executed successfully... ...","data":{"receiptId":36,"transactions":[{"exchangeRate":3.0,"exchangeUnit":10.0,"currencyId":"USD","id":22},{"exchangeRate":5.0,"exchangeUnit":10.0,"currencyId":"GBP","id":23}]}}
+	    {  <br>
+   "code":0,<br>
+   "description":"Transaction(s) executed successfully... ...",<br>
+   "data":{  <br>
+      "receiptId":36,<br>
+      "transactions":[  <br>
+         {  <br>
+            "exchangeRate":3.0,<br>
+            "exchangeUnit":10.0,<br>
+            "currencyId":"USD",<br>
+            "id":22<br>
+         },<br>
+         {  <br>
+            "exchangeRate":5.0,<br>
+            "exchangeUnit":10.0,<br>
+            "currencyId":"GBP",<br>
+            "id":23<br>
+         }<br>
+      ]<br>
+   }<br>
+}
 	 <br>   	    
 	 Error Code(s) : <br> 
 		ALL_FINE = 0, <br>
