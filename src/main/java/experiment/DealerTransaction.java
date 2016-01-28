@@ -1,5 +1,6 @@
 package experiment;
 
+
 public class DealerTransaction {
 
 	private String currencyId;

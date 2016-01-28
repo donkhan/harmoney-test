@@ -39,9 +39,9 @@ public class DealerTransactionTest extends BaseTest{
 		JSONArray atransactions = new JSONArray();
 		for(DealerTransaction orig : transactions){
 			JSONObject tran = new JSONObject();
-			tran.put("currencyId",orig.getCurrencyId());
-			tran.put("exchangeUnit",orig.getExchangeUnit());
-			tran.put("exchangeRate",orig.getExchangeRate());
+			tran.put("currency-id",orig.getCurrencyId());
+			tran.put("unit",orig.getExchangeUnit());
+			tran.put("exchange-rate",orig.getExchangeRate());
 			atransactions.put(tran);
 		}
 		request.put("transactions",atransactions);

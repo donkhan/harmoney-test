@@ -18,6 +18,7 @@ public class MooseTransactionTest {
 			sessionId = loginTest.login();
 			List<DealerTransaction> list = new ArrayList<DealerTransaction>();
 			list.add(new DealerTransaction("USD",10,3));
+			list.add(new DealerTransaction("GBP",10,5));
 			DealerTransactionTest dt = new DealerTransactionTest(list,userName,sessionId);
 			dt.executeTransactions();
 			
