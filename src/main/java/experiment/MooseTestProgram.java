@@ -14,13 +14,13 @@ public class MooseTestProgram {
 		try {
 			String sessionId = test.login();
 			MooseGETTest stest = new MooseGETTest(userName,sessionId);
-			stest.setURI("/harmoney2/get-stocks/Trichy/USD");
+			stest.setURI("/harmoney2/moose/get-stocks/Trichy/USD");
 			stest.execute();
 			
-			stest.setURI("/harmoney2/get-stocks/Trichy/USE");
+			stest.setURI("/harmoney2/moose/get-stocks/Trichy/USE");
 			stest.execute();
 			
-			stest.setURI("/harmoney2/get-stocks/Trichi/USD");
+			stest.setURI("/harmoney2/moose/get-stocks/Trichi/USD");
 			stest.execute();
 			
 			LogoutTest logoutTest = new LogoutTest(userName,sessionId);
