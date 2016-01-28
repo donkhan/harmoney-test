@@ -28,7 +28,7 @@ public class DealerTransactionTest extends BaseTest{
 	}
 	
 	private void setReceipt(JSONObject request){
-		double t = setTransactions(request);
+		setTransactions(request);
 	}
 	
 	
