@@ -94,7 +94,7 @@ Accept-Language: en-US,en;q=0.8<br>
 	URL : /harmoney2/harmoney2/moose-transaction/{branch-name} <br>
 	 HTTP Method: POST <br>
 	 Payload:  { "transactions" : [{"exchangeRate" : double,"currencyId": double, "exchangeUnit" : double }...]<br>
-	 Example : PayLoad {"transactions":[{"exchangeRate":3,"currencyId":"USD","exchangeUnit":10},{"exchangeRate":5,"currencyId":"GBP","exchangeUnit":10}]}
+	 Example : {"transactions":[{"exchangeRate":3,"currencyId":"USD","exchangeUnit":10},{"exchangeRate":5,"currencyId":"GBP","exchangeUnit":10}]}
 	 <br>
 	 Sample Output : <br> 
 	    {"code":0,"description":"Transaction(s) executed successfully... ...","data":{"receiptId":36,"transactions":[{"exchangeRate":3.0,"exchangeUnit":10.0,"currencyId":"USD","id":22},{"exchangeRate":5.0,"exchangeUnit":10.0,"currencyId":"GBP","id":23}]}}
