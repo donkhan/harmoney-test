@@ -34,10 +34,11 @@ public class DealerTransactionTest extends BaseTest{
 	
 	
 	private double setTransactions(JSONObject request){
-		JSONObject tran = new JSONObject();
+		
 		double total = 0d;
 		JSONArray atransactions = new JSONArray();
 		for(DealerTransaction orig : transactions){
+			JSONObject tran = new JSONObject();
 			tran.put("currencyId",orig.getCurrencyId());
 			tran.put("exchangeUnit",orig.getExchangeUnit());
 			tran.put("exchangeRate",orig.getExchangeRate());

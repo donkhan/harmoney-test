@@ -81,12 +81,37 @@ Accept-Language: en-US,en;q=0.8<br>
 	 Payload: None <br>
 	 Sample Output : <br> 
         "data":{ "branchStocks": 120, "tellersStocks" : 1221, code : 0, description : "Success" } <br>
-	 Error Code(s) : 
-		0 - Success 
-		1 - Branch Not Present
-		2 - Currency Not Present </b> <br>
+	 Error Code(s) : <br> 
+		ALL_FINE = 0, <br>
+		BRANCH_NOT_FOUND = 1 <br>
+		CURRENCY_NOT_FOUND = 2<br>
+		
 	Example : /harmoney2/get-stocks/Trichy/USD  <br>
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTestProgram.java> Test Program </a> 
+	<br><br>
+	
+	<b> <u>Executing Transactions in MoneyBox from Moose </u> </b> <br> <br> 
+	URL : /harmoney2/harmoney2/moose-transaction/{branch-name} <br>
+	 HTTP Method: POST <br>
+	 Payload:  { "transactions" : [{"exchangeRate" : double,"currencyId": double, "exchangeUnit" : double }...]<br>
+	 Example : PayLoad {"transactions":[{"exchangeRate":3,"currencyId":"USD","exchangeUnit":10},{"exchangeRate":5,"currencyId":"GBP","exchangeUnit":10}]}
+	 <br>
+	 Sample Output : <br> 
+	    {"code":0,"description":"Transaction(s) executed successfully... ...","data":{"receiptId":36,"transactions":[{"exchangeRate":3.0,"exchangeUnit":10.0,"currencyId":"USD","id":22},{"exchangeRate":5.0,"exchangeUnit":10.0,"currencyId":"GBP","id":23}]}}
+	 <br>   	    
+	 Error Code(s) : <br> 
+		ALL_FINE = 0, <br>
+		BRANCH_NOT_FOUND = 1 <br>
+		CURRENCY_NOT_FOUND = 2<br>
+		TRANSACTIONS_MISSING = 3<br>
+		DEALER_NOT_FOUND = 4<br>
+		ACCOUNT_NOT_FOUND = 5<br>
+		ORDER_CREATION_FAILED = 6<br>
+		UNKNOWN_ERROR = 7<br>
+		INVALID_INPUT = 8<br>
+		INSUFFICIENT_STOCKS = 8<br>
+	
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTransactionTest.java> Test Program </a> 
 	<br><br>
 	
 	<b> <u>Things to care </u> </b> <br> 
