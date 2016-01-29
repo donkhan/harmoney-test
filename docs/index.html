@@ -95,8 +95,8 @@ Accept-Language: en-US,en;q=0.8<br>
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTestProgram.java> Test Program </a> 
 	<br><br>
 	
-	<b> <u>Executing Transactions in MoneyBox from Moose </u> </b> <br> <br> 
-	URL : /harmoney2/moose/harmoney2/moose-transaction/{branch-name} <br>
+	<b> <u>Executing Transactions </u> </b> <br> <br> 
+	 URL : /harmoney2/moose/harmoney2/moose-transaction/{branch-name} <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br>
 	 {  <br>
@@ -158,9 +158,37 @@ Accept-Language: en-US,en;q=0.8<br>
 		INVALID_INPUT = 8<br>
 		INSUFFICIENT_STOCKS = 9<br>
 	
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTransactionTest.java> Test Program </a>
+	<br> Note: Moose should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br><br>
+	
+	<b> <u>Cancel Transactions </u> </b> <br> <br> 
+	URL : /harmoney2/moose/harmoney2/cancel-transaction/{branch-name}/{branchId}/{receiptId}/{transactionId} <br>
+	 HTTP Method: POST <br>
+	 Payload:  <br>
+	 {"reason": String}
+	 Example: <br>
+	 {"reason":"User cancelled Visit"}
+	 <br>
+	 Sample Output : <br>
+	 {"code":10,"description":"Already Deleted","data":null}
+	 <br> 
+	 Error Code(s) : <br> 
+		ALL_FINE = 0, <br>
+		BRANCH_NOT_FOUND = 1 <br>
+		CURRENCY_NOT_FOUND = 2<br>
+		TRANSACTIONS_MISSING = 3<br>
+		DEALER_NOT_FOUND = 4<br>
+		ACCOUNT_NOT_FOUND = 5<br>
+		ORDER_CREATION_FAILED = 6<br>
+		UNKNOWN_ERROR = 7<br>
+		INSUFFICIENT_STOCKS = 9<br>
+		ALREADY_DELETED = 10 <br>
+	
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTransactionTest.java> Test Program </a> 
 	<br><br>
 	
+		
 	<b> <u>Things to care </u> </b> <br> 
 		<ul> 
 			<li> Please Make sure to logout. </li>

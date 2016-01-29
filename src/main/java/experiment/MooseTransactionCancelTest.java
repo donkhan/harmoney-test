@@ -46,7 +46,8 @@ public class MooseTransactionCancelTest extends BaseTest{
 	@Override
 	public JSONObject getPayLoad() {
 		JSONObject obj =  new JSONObject();
-		obj.put("reason", "Junk Reason");
+		obj.put("reason", "User cancelled Visit");
+		System.out.println(obj);
 		return obj;
 	}
 
