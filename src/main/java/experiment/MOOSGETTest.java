@@ -6,11 +6,11 @@ import java.io.InputStream;
 import org.apache.http.HttpResponse;
 
 
-public class MooseGETTest extends BaseGETTest{
+public class MOOSGETTest extends BaseGETTest{
 
 	private String uri;
 	
-	public MooseGETTest(String userName,String sessionId){
+	public MOOSGETTest(String userName,String sessionId){
 		super(userName,sessionId);
 	}
 	

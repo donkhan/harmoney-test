@@ -4,7 +4,7 @@ import java.io.IOException;
 
 
 
-public class MooseTestProgram {
+public class MOOSTestProgram {
 	
 	public static void main(String args[]){
 		String userName = "vteial";
@@ -13,7 +13,7 @@ public class MooseTestProgram {
 		LoginTest test = new LoginTest(userName,passWord);
 		try {
 			String sessionId = test.login();
-			MooseGETTest stest = new MooseGETTest(userName,sessionId);
+			MOOSGETTest stest = new MOOSGETTest(userName,sessionId);
 			stest.setURI("/harmoney2/moose/get-stocks/Trichy/USD");
 			stest.execute();
 			

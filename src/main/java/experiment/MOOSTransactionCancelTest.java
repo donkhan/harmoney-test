@@ -9,7 +9,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONObject;
 
-public class MooseTransactionCancelTest extends BaseTest{
+public class MOOSTransactionCancelTest extends BaseTest{
 	private String userName;
 	private String sessionId;
 	
@@ -21,7 +21,7 @@ public class MooseTransactionCancelTest extends BaseTest{
 		String sessionId = "";
 		try {
 			sessionId = loginTest.login();
-			MooseTransactionCancelTest ct = new MooseTransactionCancelTest(userName,sessionId);
+			MOOSTransactionCancelTest ct = new MOOSTransactionCancelTest(userName,sessionId);
 			ct.executeTransactions();
 			
 		} catch (Throwable e) {
@@ -38,7 +38,7 @@ public class MooseTransactionCancelTest extends BaseTest{
 		}
 	}
 	
-	public MooseTransactionCancelTest(String un,String sessionId){
+	public MOOSTransactionCancelTest(String un,String sessionId){
 		this.userName = un;
 		this.sessionId = sessionId;
 	}

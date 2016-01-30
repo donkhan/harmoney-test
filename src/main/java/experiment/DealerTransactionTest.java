@@ -75,7 +75,7 @@ public class DealerTransactionTest extends BaseTest{
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moose/execute-transactions/Trichy";
+		return "/harmoney2/moos/execute-transactions/Trichy";
 	}
 
 	@Override

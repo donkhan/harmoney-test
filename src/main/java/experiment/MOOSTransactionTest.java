@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 
-public class MooseTransactionTest {
+public class MOOSTransactionTest {
 
 	public static void main(String args[]){
 		String userName = "feroz";
