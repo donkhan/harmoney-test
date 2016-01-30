@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Documentation for MOOSE API Integration</title>
+<title>Documentation for MOOS API Integration</title>
 </head>
 <body>
 	<br><b><u> Preface </u></b><br><br>
@@ -74,7 +74,7 @@ Accept-Language: en-US,en;q=0.8<br>
 	<br> 
 	
 	<b> <u>Getting Stocks for given Branch and Currency </u> </b> <br> <br> 
-	URL : /harmoney2/moose/get-stocks/{branch-name}/{currency} <br>
+	URL : /harmoney2/moos/get-stocks/{branch-name}/{currency} <br>
 	 HTTP Method: GET <br>
 	 Payload: None <br>
 	 Sample Output : <br> 
@@ -91,12 +91,12 @@ Accept-Language: en-US,en;q=0.8<br>
 		BRANCH_NOT_FOUND = 1 <br>
 		CURRENCY_NOT_FOUND = 2<br>
 		
-	Example : /harmoney2/moose/get-stocks/Trichy/USD  <br>
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTestProgram.java> Test Program </a> 
+	Example : /harmoney2/moos/get-stocks/Trichy/USD  <br>
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTestProgram.java> Test Program </a> 
 	<br><br>
 	
 	<b> <u>Executing Transactions </u> </b> <br> <br> 
-	 URL : /harmoney2/moose/harmoney2/moose-transaction/{branch-name} <br>
+	 URL : /harmoney2/moos/harmoney2/execute-transactions/{branch-name} <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br>
 	 {  <br>
@@ -158,12 +158,12 @@ Accept-Language: en-US,en;q=0.8<br>
 		INVALID_INPUT = 8<br>
 		INSUFFICIENT_STOCKS = 9<br>
 	
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTransactionTest.java> Test Program </a>
-	<br> Note: Moose should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a>
+	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
 	<b> <u>Cancel Transactions </u> </b> <br> <br> 
-	URL : /harmoney2/moose/harmoney2/cancel-transaction/{branch-name}/{branchId}/{receiptId}/{transactionId} <br>
+	URL : /harmoney2/moos/harmoney2/cancel-transaction/{branch-name}/{branchId}/{receiptId}/{transactionId} <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br>
 	 {"reason": String}
@@ -185,7 +185,7 @@ Accept-Language: en-US,en;q=0.8<br>
 		INSUFFICIENT_STOCKS = 9<br>
 		ALREADY_DELETED = 10 <br>
 	
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MooseTransactionTest.java> Test Program </a> 
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a> 
 	<br><br>
 	
 		
