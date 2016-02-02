@@ -8,7 +8,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONObject;
 
 public abstract class BaseTest {
 
@@ -35,14 +34,14 @@ public abstract class BaseTest {
 		request.addHeader("Accept","application/json");
 		addExtraHeaders(request);
 		
-		String content = getPayLoad().toString();
+		String content = getPayLoad();
 		
 		request.setEntity(new StringEntity(content));
 		HttpResponse response = client.execute(request);
 		return response;
 	}
 	
-	public abstract JSONObject getPayLoad();
+	public abstract String getPayLoad();
 	public abstract String getURI();
 	public abstract void addExtraHeaders(HttpPost request);
 }

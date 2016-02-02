@@ -44,11 +44,11 @@ public class MOOSTransactionCancelTest extends BaseTest{
 	}
 	
 	@Override
-	public JSONObject getPayLoad() {
+	public String getPayLoad() {
 		JSONObject obj =  new JSONObject();
 		obj.put("reason", "User cancelled Visit");
 		System.out.println(obj);
-		return obj;
+		return obj.toString();
 	}
 
 	@Override

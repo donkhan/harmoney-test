@@ -24,11 +24,11 @@ public class LoginTest extends BaseTest{
 	
 
 	@Override
-	public JSONObject getPayLoad() {
+	public String getPayLoad() {
 		JSONObject user = new JSONObject();
 		user.accumulate("id",userName);
 		user.accumulate("password",passWord);
-		return user;
+		return user.toString();
 	}
 
 	

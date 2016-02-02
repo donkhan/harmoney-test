@@ -99,11 +99,11 @@ public class TransactionTest extends BaseTest{
 	}
 
 	@Override
-	public JSONObject getPayLoad() {
+	public String getPayLoad() {
 		JSONObject payLoad = new JSONObject();
 		setReceipt(payLoad);
 		setRiskAnalysis(payLoad);
-		return payLoad;
+		return payLoad.toString();
 	}
 
 	@Override

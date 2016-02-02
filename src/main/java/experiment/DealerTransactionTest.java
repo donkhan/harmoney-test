@@ -44,7 +44,7 @@ public class DealerTransactionTest extends BaseTest{
 			tran.put("exchange-rate",orig.getExchangeRate());
 			atransactions.put(tran);
 		}
-		request.put("transactions",atransactions);
+		request.put("orders",atransactions);
 		return total;
 	}
 	
@@ -66,16 +66,16 @@ public class DealerTransactionTest extends BaseTest{
 	}
 
 	@Override
-	public JSONObject getPayLoad() {
+	public String getPayLoad() {
 		JSONObject payLoad = new JSONObject();
 		setReceipt(payLoad);
 		System.out.println("PayLoad " + payLoad.toString());
-		return payLoad;
+		return payLoad.toString();
 	}
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moos/execute-transactions/Trichy";
+		return "/harmoney2/moos/place-orders/Trichy";
 	}
 
 	@Override
