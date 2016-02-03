@@ -1,13 +1,40 @@
 package experiment.moostest;
 
 import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.http.HttpResponse;
 
 import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
+import experiment.test.BaseGETTest;
 
 
 
-public class MOOSStockRetrievalTest {
+public class MOOSStockRetrievalTest extends BaseGETTest{
+	
+	private String uri;
+	
+	public MOOSStockRetrievalTest(String userName,String sessionId){
+		super(userName,sessionId);
+	}
+	
+	@Override
+	public String getURI() {
+		return uri;
+	}
+	
+	public void setURI(String s){
+		this.uri = s;
+	}
+	
+	public void print(HttpResponse response) throws IOException{
+		InputStream is = response.getEntity().getContent();
+		int j;
+		while(( j = is.read()) != -1){
+			System.out.print((char)j);
+		}
+	}
 	
 	public static void main(String args[]){
 		String userName = "vteial";
@@ -16,7 +43,7 @@ public class MOOSStockRetrievalTest {
 		LoginTest test = new LoginTest(userName,passWord);
 		try {
 			String sessionId = test.login();
-			MOOSGETTest stest = new MOOSGETTest(userName,sessionId);
+			MOOSStockRetrievalTest stest = new MOOSStockRetrievalTest(userName,sessionId);
 			stest.setURI("/harmoney2/moos/get-stocks/Trichy/USD");
 			stest.execute();
 			System.out.println("");
