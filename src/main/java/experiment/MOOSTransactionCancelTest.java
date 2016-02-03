@@ -53,7 +53,7 @@ public class MOOSTransactionCancelTest extends BaseTest{
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moose/cancel-transaction/Trichy/44/12"; 
+		return "/harmoney2/moos/cancel-transaction/Trichy/44/12"; 
 	}
 
 	@Override
