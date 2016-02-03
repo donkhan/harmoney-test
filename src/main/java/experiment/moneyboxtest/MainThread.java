@@ -1,7 +1,10 @@
-package experiment;
+package experiment.moneyboxtest;
 
 import java.io.IOException;
 import java.util.List;
+
+import experiment.moneyboxtest.model.Transaction;
+import experiment.test.LoginTest;
 
 public class MainThread extends Thread implements Runnable{
 	

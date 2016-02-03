@@ -1,4 +1,4 @@
-package experiment;
+package experiment.moneyboxtest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +13,9 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import experiment.moneyboxtest.model.Transaction;
+import experiment.test.BaseTest;
 
 public class TransactionTest extends BaseTest{
 	
