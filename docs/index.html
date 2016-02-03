@@ -72,26 +72,55 @@
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSStockRetrievalTest.java> Test Program </a> 
 	<br><br>
 
-	<b> <u>Place Orders</u> </b> <br> <br> 
+	 <b><u>Place Orders</u></b><br><br> 
 	 URL : /harmoney2/moos/harmoney2/place-orders/{branch-name} <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
 	 Example :<br> <img src="img/OrderSample.png">	 <br>
 	 Sample Output : <br> <img src="img/OrderOutput.png">	 <br>
 	       	    
-	 Error Code(s) : <br> 
-		ALL_FINE = 0, <br>
-		BRANCH_NOT_FOUND = 1 <br>
-		CURRENCY_NOT_FOUND = 2<br>
-		TRANSACTIONS_MISSING = 3<br>
-		DEALER_NOT_FOUND = 4<br>
-		ACCOUNT_NOT_FOUND = 5<br>
-		ORDER_CREATION_FAILED = 6<br>
-		UNKNOWN_ERROR = 7<br>
-		INVALID_INPUT = 8<br>
-		INSUFFICIENT_STOCKS = 9<br>
+	 Error Code(s) : <br><br> 
+		<table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
+  		<tr><td>3</td><td>TRANSACTIONS_MISSING</td></tr>
+  		<tr><td>4</td><td>DEALER_NOT_FOUND</td></tr>
+  		<tr><td>5</td><td>ACCOUNT_NOT_FOUND</td></tr>
+  		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		<tr><td>8</td><td>INVALID_INPUT</td></tr>
+
+	</table>
 	
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a>
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
+	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br><br>
+	
+	<b><u>Executing Orders</u></b><br><br> 
+	 URL : /harmoney2/moos/harmoney2/execute-orders/{branch-name} <br>
+	 HTTP Method: POST <br>
+	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
+	 Example :<br> <img src="img/OrderSample.png">	 <br>
+	 Sample Output : <br> <img src="img/TransactionOutput.png">	 <br>
+	       	    
+	 Error Code(s) : <br> 
+	 <table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
+  		<tr><td>3</td><td>TRANSACTIONS_MISSING</td></tr>
+  		<tr><td>4</td><td>DEALER_NOT_FOUND</td></tr>
+  		<tr><td>5</td><td>ACCOUNT_NOT_FOUND</td></tr>
+  		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		<tr><td>8</td><td>INVALID_INPUT</td></tr>
+  		<tr><td>9</td><td>INSUFFICIENT_STOCKS</td></tr>
+	</table>
+	 		
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
 	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
@@ -104,17 +133,20 @@
 	 Sample Output : <br> <img src="img/TransactionOutput.png">	 <br>
 	    	    
 	 Error Code(s) : <br> 
-		ALL_FINE = 0, <br>
-		BRANCH_NOT_FOUND = 1 <br>
-		CURRENCY_NOT_FOUND = 2<br>
-		TRANSACTIONS_MISSING = 3<br>
-		DEALER_NOT_FOUND = 4<br>
-		ACCOUNT_NOT_FOUND = 5<br>
-		ORDER_CREATION_FAILED = 6<br>
-		UNKNOWN_ERROR = 7<br>
-		INVALID_INPUT = 8<br>
-		INSUFFICIENT_STOCKS = 9<br>
-	
+	  <table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
+  		<tr><td>3</td><td>TRANSACTIONS_MISSING</td></tr>
+  		<tr><td>4</td><td>DEALER_NOT_FOUND</td></tr>
+  		<tr><td>5</td><td>ACCOUNT_NOT_FOUND</td></tr>
+  		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		<tr><td>8</td><td>INVALID_INPUT</td></tr>
+  		<tr><td>9</td><td>INSUFFICIENT_STOCKS</td></tr>
+	  </table>
+		
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a>
 	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
@@ -127,18 +159,15 @@
 	 Sample Output : <br><img src="img/CancelTransactionOutput.png"> <br>
 	  
 	 Error Code(s) : <br> 
-		ALL_FINE = 0, <br>
-		BRANCH_NOT_FOUND = 1 <br>
-		CURRENCY_NOT_FOUND = 2<br>
-		TRANSACTIONS_MISSING = 3<br>
-		DEALER_NOT_FOUND = 4<br>
-		ACCOUNT_NOT_FOUND = 5<br>
-		ORDER_CREATION_FAILED = 6<br>
-		UNKNOWN_ERROR = 7<br>
-		INSUFFICIENT_STOCKS = 9<br>
-		ALREADY_DELETED = 10 <br>
+		<table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		<tr><td>9</td><td>ALREADY_DELETED</td></tr>
+	</table>
 	
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a> 
+	<a href=> Test Program </a> 
 	<br><br>
 	
 		
