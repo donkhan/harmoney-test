@@ -57,6 +57,8 @@ public class MOOSPlaceOrderTest extends BaseTest{
 	}
 	
 	private void setReceipt(JSONObject request){
+		long pickUpTime = System.currentTimeMillis() + 3 * 24 * 60 * 60 * 1000;
+		request.put("pick-up-time", pickUpTime);
 		setTransactions(request);
 	}
 	
