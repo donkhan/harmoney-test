@@ -9,9 +9,9 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
 
+import experiment.authentication.LoginTest;
+import experiment.authentication.LogoutTest;
 import experiment.test.BaseTest;
-import experiment.test.LoginTest;
-import experiment.test.LogoutTest;
 
 public class MOOSExecuteOrderTest extends BaseTest {
 

@@ -12,10 +12,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import experiment.authentication.LoginTest;
+import experiment.authentication.LogoutTest;
 import experiment.moostest.model.MOOSOrder;
 import experiment.test.BaseTest;
-import experiment.test.LoginTest;
-import experiment.test.LogoutTest;
 
 public class MOOSPlaceOrderTest extends BaseTest{
 	
