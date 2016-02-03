@@ -98,13 +98,14 @@ public class MOOSExecuteTransactionTest extends BaseTest{
 	public String getPayLoad() {
 		JSONObject payLoad = new JSONObject();
 		setReceipt(payLoad);
+		payLoad.put("branch-name", "Trichy");
 		System.out.println("PayLoad " + payLoad.toString());
 		return payLoad.toString();
 	}
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moos/execute-transactions/Trichy";
+		return "/harmoney2/moos/execute-transactions";
 	}
 
 	@Override

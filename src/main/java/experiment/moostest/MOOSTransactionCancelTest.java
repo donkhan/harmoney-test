@@ -51,13 +51,16 @@ public class MOOSTransactionCancelTest extends BaseTest{
 	public String getPayLoad() {
 		JSONObject obj =  new JSONObject();
 		obj.put("reason", "User cancelled Visit");
-		System.out.println(obj);
+		obj.put("branch-name","Trichy");
+		obj.put("receipt-id", 44);
+		obj.put("id", 12);
+		System.out.println(obj.toString());
 		return obj.toString();
 	}
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moos/cancel-transaction/Trichy/44/12"; 
+		return "/harmoney2/moos/cancel-transaction"; 
 	}
 
 	@Override
