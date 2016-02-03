@@ -40,8 +40,8 @@ public class MOOSExecuteOrderTest extends BaseTest {
 	@Override
 	public String getPayLoad() {
 		JSONArray payLoad = new JSONArray();
-		payLoad.put(301);
-		payLoad.put(302);
+		payLoad.put(304);
+		payLoad.put(303);
 		System.out.println("PayLoad " + payLoad.toString());
 		return payLoad.toString();
 	}
