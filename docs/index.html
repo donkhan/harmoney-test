@@ -87,7 +87,6 @@
   		<tr><td>0</td><td>ALL_FINE</td></tr>
   		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
   		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
-  		<tr><td>3</td><td>TRANSACTIONS_MISSING</td></tr>
   		<tr><td>4</td><td>DEALER_NOT_FOUND</td></tr>
   		<tr><td>5</td><td>ACCOUNT_NOT_FOUND</td></tr>
   		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
@@ -112,13 +111,10 @@
   		<tr><td>0</td><td>ALL_FINE</td></tr>
   		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
   		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
-  		<tr><td>3</td><td>TRANSACTIONS_MISSING</td></tr>
-  		<tr><td>4</td><td>DEALER_NOT_FOUND</td></tr>
-  		<tr><td>5</td><td>ACCOUNT_NOT_FOUND</td></tr>
-  		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
   		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
-  		<tr><td>8</td><td>INVALID_INPUT</td></tr>
   		<tr><td>9</td><td>INSUFFICIENT_STOCKS</td></tr>
+  		<tr><td>12</td><td>BRANCH_MISMATCH</td></tr>
+  		<tr><td>13</td><td>ORDER_ALREADY_TRANSACTED</td></tr>
 	</table>
 	<br> 		
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
@@ -137,11 +133,12 @@
   		<tr><th>Code</th><th>Reason</th></tr>
   		<tr><td>0</td><td>ALL_FINE</td></tr>
   		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
-  		
+  		<tr><td>12</td><td>BRANCH_MISMATCH</td></tr>
+  		<tr><td>13</td><td>ORDER_ALREADY_TRANSACTED</td></tr>
 	</table>
 	<br> 		
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
-	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSOrderCancelTest.java> Test Program </a>
+	 
 	<br><br>
 	
 	<b> <u>Execute Transactions </u> </b> <br> <br> 
