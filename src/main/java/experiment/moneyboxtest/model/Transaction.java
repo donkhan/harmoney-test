@@ -1,4 +1,4 @@
-package experiment;
+package experiment.moneyboxtest.model;
 
 public class Transaction {
 

@@ -1,7 +1,9 @@
-package experiment;
+package experiment.moneyboxtest;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import experiment.moneyboxtest.model.Transaction;
 
 public class TestProgram {
 

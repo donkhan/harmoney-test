@@ -1,4 +1,4 @@
-package experiment;
+package experiment.moostest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,9 +7,13 @@ import java.io.InputStreamReader;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
-import org.json.JSONObject;
+import org.json.JSONArray;
 
-public class MOOSTransactionCancelTest extends BaseTest{
+import experiment.authentication.LoginTest;
+import experiment.authentication.LogoutTest;
+import experiment.test.BaseTest;
+
+public class MOOSOrderCancelTest extends BaseTest{
 	private String userName;
 	private String sessionId;
 	
@@ -21,7 +25,7 @@ public class MOOSTransactionCancelTest extends BaseTest{
 		String sessionId = "";
 		try {
 			sessionId = loginTest.login();
-			MOOSTransactionCancelTest ct = new MOOSTransactionCancelTest(userName,sessionId);
+			MOOSOrderCancelTest ct = new MOOSOrderCancelTest(userName,sessionId);
 			ct.executeTransactions();
 			
 		} catch (Throwable e) {
@@ -38,22 +42,24 @@ public class MOOSTransactionCancelTest extends BaseTest{
 		}
 	}
 	
-	public MOOSTransactionCancelTest(String un,String sessionId){
+	public MOOSOrderCancelTest(String un,String sessionId){
 		this.userName = un;
 		this.sessionId = sessionId;
 	}
 	
+	
 	@Override
 	public String getPayLoad() {
-		JSONObject obj =  new JSONObject();
-		obj.put("reason", "User cancelled Visit");
-		System.out.println(obj);
-		return obj.toString();
+		JSONArray payLoad = new JSONArray();
+		payLoad.put(304);
+		payLoad.put(303);
+		System.out.println("PayLoad " + payLoad.toString());
+		return payLoad.toString();
 	}
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moos/cancel-transaction/Trichy/44/12"; 
+		return "/harmoney2/moos/cancel-orders/Trichy"; 
 	}
 
 	@Override

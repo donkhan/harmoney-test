@@ -1,6 +1,9 @@
-package experiment;
+package experiment.moostest;
 
 import java.io.IOException;
+
+import experiment.authentication.LoginTest;
+import experiment.authentication.LogoutTest;
 
 
 
