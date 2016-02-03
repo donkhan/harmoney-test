@@ -99,8 +99,8 @@
 	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
-	<b><u>Executing Orders</u></b><br><br> 
-	 URL : /harmoney2/moos/harmoney2/execute-orders/{branch-name} <br>
+	<b><u>Execute Orders</u></b><br><br> 
+	 URL : /harmoney2/moos/harmoney2/execute-orders <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
 	 Example :<br> <img src="img/OrderSample.png">	 <br>
@@ -125,9 +125,27 @@
 	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
+	<b><u>Cancel Orders</u></b><br><br> 
+	 URL : /harmoney2/moos/harmoney2/cancel-orders <br>
+	 HTTP Method: POST <br>
+	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
+	 Example :<br> <img src="img/OrderSample.png">	 <br>
+	 Sample Output : <br> <img src="img/TransactionOutput.png">	 <br>
+	       	    
+	 Error Code(s) : <br> 
+	 <table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		
+	</table>
+	<br> 		
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
+	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br><br>
 	
-	<b> <u>Executing Transactions </u> </b> <br> <br> 
-	 URL : /harmoney2/moos/harmoney2/execute-transactions/{branch-name} <br>
+	<b> <u>Execute Transactions </u> </b> <br> <br> 
+	 URL : /harmoney2/moos/harmoney2/execute-transactions <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
 	 Example : <br> <img src="img/OrderSample.png">	 <br>
@@ -153,7 +171,7 @@
 	<br><br>
 	
 	<b> <u>Cancel Transaction </u> </b> <br> <br> 
-	URL : /harmoney2/moos/harmoney2/cancel-transaction/{branch-name}/{branchId}/{receiptId}/{transactionId} <br>
+	URL : /harmoney2/moos/harmoney2/cancel-transaction <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/CancelTransactionPayload.png">	 <br>
 	 Example: <br>  <img src="img/CancelTransactionSample.png"> <br>
