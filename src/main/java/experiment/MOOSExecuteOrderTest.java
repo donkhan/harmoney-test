@@ -9,12 +9,12 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
 
-public class DealerOrderTest extends BaseTest {
+public class MOOSExecuteOrderTest extends BaseTest {
 
 	private String userName;
 	private String sessionId;
 
-	public DealerOrderTest(String userName, String sessionId) {
+	public MOOSExecuteOrderTest(String userName, String sessionId) {
 		this.userName = userName;
 		this.sessionId = sessionId;
 	}
@@ -40,8 +40,8 @@ public class DealerOrderTest extends BaseTest {
 	@Override
 	public String getPayLoad() {
 		JSONArray payLoad = new JSONArray();
-		payLoad.put(297);
-		//payLoad.put(231);
+		payLoad.put(301);
+		payLoad.put(302);
 		System.out.println("PayLoad " + payLoad.toString());
 		return payLoad.toString();
 	}
@@ -67,7 +67,7 @@ public class DealerOrderTest extends BaseTest {
 			String sessionId = "";
 			try {
 				sessionId = loginTest.login();
-				DealerOrderTest dt = new DealerOrderTest(userName, sessionId);
+				MOOSExecuteOrderTest dt = new MOOSExecuteOrderTest(userName, sessionId);
 				dt.executeTransactions();
 
 			} catch (Throwable e) {

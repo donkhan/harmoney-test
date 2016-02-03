@@ -1,13 +1,13 @@
 package experiment;
 
 
-public class DealerTransaction {
+public class MOOSOrder {
 
 	private String currencyId;
 	private double exchangeUnit;
 	private double exchangeRate;
 	
-	public DealerTransaction(String currencyId,
+	public MOOSOrder(String currencyId,
 			int exchangeUnit,double exchangeRate){
 		setCurrencyId(currencyId);
 		setExchangeUnit(exchangeUnit);

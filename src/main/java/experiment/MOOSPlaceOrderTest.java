@@ -3,6 +3,7 @@ package experiment;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -11,17 +12,40 @@ import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class DealerTransactionTest extends BaseTest{
+public class MOOSPlaceOrderTest extends BaseTest{
 	
-	private List<DealerTransaction> transactions;
+	private List<MOOSOrder> transactions;
 	private String userName;
 	private String sessionId;
 	
-	public static void main(String args[]) throws ClientProtocolException, IOException{
+	public static void main(String args[]){
+		String userName = "feroz";
+		String passWord = "1";
 		
+		LoginTest loginTest = new LoginTest(userName,passWord);
+		String sessionId = "";
+		try {
+			sessionId = loginTest.login();
+			List<MOOSOrder> list = new ArrayList<MOOSOrder>();
+			list.add(new MOOSOrder("USD",10,1));
+			list.add(new MOOSOrder("GBP",10,5));
+			MOOSPlaceOrderTest dt = new MOOSPlaceOrderTest(list,userName,sessionId);
+			dt.executeTransactions();
+			
+		} catch (Throwable e) {
+			e.printStackTrace();
+		} finally{
+			LogoutTest logout = new LogoutTest(userName,sessionId);
+			try {
+				logout.execute();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
-	
-	public DealerTransactionTest(List<DealerTransaction> transactions,String userName,String sessionId){
+	public MOOSPlaceOrderTest(List<MOOSOrder> transactions,String userName,String sessionId){
 		this.transactions = transactions;
 		this.userName = userName;
 		this.sessionId = sessionId;
@@ -37,7 +61,7 @@ public class DealerTransactionTest extends BaseTest{
 		
 		double total = 0d;
 		JSONArray atransactions = new JSONArray();
-		for(DealerTransaction orig : transactions){
+		for(MOOSOrder orig : transactions){
 			JSONObject tran = new JSONObject();
 			tran.put("currency-id",orig.getCurrencyId());
 			tran.put("unit",orig.getExchangeUnit());
