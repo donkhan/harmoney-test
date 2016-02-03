@@ -6,10 +6,9 @@
 </head>
 <body>
 	<br><b><u> Preface </u></b><br><br>
-		This document describes the REST End Points provided by Money Box Application for external applications to communicate. 
-		To Execute REST call's, External application <u> must login </u> to Money Box using valid Login Credentials.
-		We provide Test Programs for reference written in JAVA. External applications developed in other languages can use these programs 
-		as reference.These test programs are available <a href=https://github.com/donkhan/harmoney-test>here.</a></b> There is no advertising URL in MoneyBox.
+		This document describes the REST End Points provided by Money Box Application for MOOS to communicate. 
+		To Execute REST call's, MOOS <u> must login </u> to Money Box using valid Login Credentials.
+		We provide Test Programs for reference written in JAVA.These test programs are available <a href=https://github.com/donkhan/harmoney-test>here.</a></b> There is no advertising URL in MoneyBox.
 		Please Note that Money Box is running in http now.
 	<br><br>
 	
@@ -40,7 +39,7 @@
 		URL : /harmoney2/sessionService/authenticate <br>
 		HTTP Method: POST <br>
 		Payload: <br> <img src="img/LoginPayload.png">	 <br>
-		
+		<br>
 		<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/authentication/LoginTest.java> Test Program </a> <br>
 		<u> How to extract Session ID from the request Headers </u>
 		<ul>
@@ -54,26 +53,29 @@
 		URL : /harmoney2/sessionService/logout <br>
 		HTTP Method: GET <br>
 		Payload: None <br>
+		<br>
 		<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/authentication/LogoutTest.java> Test Program </a> <br>
 	<br> 
 	
 	<b> <u>Getting Stocks for given Branch and Currency </u> </b> <br> <br> 
 	URL : /harmoney2/moos/get-stocks/{branch-name}/{currency} <br>
-	 HTTP Method: GET <br>
-	 Payload: None <br>
-	 Sample Output : <br> <img src="img/StocksOutput.png">	 <br>
-        
-	 Error Code(s) : <br> 
-		ALL_FINE = 0, <br>
-		BRANCH_NOT_FOUND = 1 <br>
-		CURRENCY_NOT_FOUND = 2<br>
-		
 	Example : /harmoney2/moos/get-stocks/Trichy/USD  <br>
+	HTTP Method: GET <br>
+	Payload: None <br>
+	Sample Output : <br> <img src="img/StocksOutput.png">	 <br>
+     Error Code(s) : <br><br> 
+		<table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>2</td><td>CURRENCY_NOT_FOUND</td></tr>
+  		</table>
+  	<br>	
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSStockRetrievalTest.java> Test Program </a> 
 	<br><br>
 
 	 <b><u>Place Orders</u></b><br><br> 
-	 URL : /harmoney2/moos/harmoney2/place-orders/{branch-name} <br>
+	 URL : /harmoney2/moos/place-orders<br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/OrderPayload.png">	 <br>
 	 Example :<br> <img src="img/OrderSample.png">	 <br>
@@ -91,11 +93,10 @@
   		<tr><td>6</td><td>ORDER_CREATION_FAILED</td></tr>
   		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
   		<tr><td>8</td><td>INVALID_INPUT</td></tr>
-
-	</table>
-	
+		</table>
+	<br>
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
-	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
 	<b><u>Executing Orders</u></b><br><br> 
@@ -119,9 +120,9 @@
   		<tr><td>8</td><td>INVALID_INPUT</td></tr>
   		<tr><td>9</td><td>INSUFFICIENT_STOCKS</td></tr>
 	</table>
-	 		
+	<br> 		
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSPlaceOrderTest.java> Test Program </a>
-	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
 	
@@ -146,12 +147,12 @@
   		<tr><td>8</td><td>INVALID_INPUT</td></tr>
   		<tr><td>9</td><td>INSUFFICIENT_STOCKS</td></tr>
 	  </table>
-		
-	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/MOOSTransactionTest.java> Test Program </a>
-	<br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
+	<br>	
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSTransactionTest.java> Test Program </a>
+	<br><br> Note: MOOS should capture receipt id and indiviual transactions id's for later uses like cancel Transaction 
 	<br><br>
 	
-	<b> <u>Cancel Transactions </u> </b> <br> <br> 
+	<b> <u>Cancel Transaction </u> </b> <br> <br> 
 	URL : /harmoney2/moos/harmoney2/cancel-transaction/{branch-name}/{branchId}/{receiptId}/{transactionId} <br>
 	 HTTP Method: POST <br>
 	 Payload:  <br> <img src="img/CancelTransactionPayload.png">	 <br>
@@ -167,7 +168,8 @@
   		<tr><td>9</td><td>ALREADY_DELETED</td></tr>
 	</table>
 	
-	<a href=> Test Program </a> 
+	<br>
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSTransactionCancelTest.java> Test Program </a> 
 	<br><br>
 	
 		
