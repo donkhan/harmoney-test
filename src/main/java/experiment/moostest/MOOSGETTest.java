@@ -1,9 +1,11 @@
-package experiment;
+package experiment.moostest;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.http.HttpResponse;
+
+import experiment.test.BaseGETTest;
 
 
 public class MOOSGETTest extends BaseGETTest{

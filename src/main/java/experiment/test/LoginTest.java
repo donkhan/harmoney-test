@@ -1,4 +1,4 @@
-package experiment;
+package experiment.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,6 +9,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONObject;
+
 
 public class LoginTest extends BaseTest{
 

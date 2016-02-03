@@ -1,4 +1,4 @@
-package experiment;
+package experiment.test;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public abstract class BaseGETTest {
 		return port;
 	}
 
-	protected HttpResponse execute() throws ClientProtocolException,
+	public HttpResponse execute() throws ClientProtocolException,
 			IOException {
 		HttpClient client = new DefaultHttpClient();
 		String url = "http://" + getServer() + ":" + getPort() + getURI();

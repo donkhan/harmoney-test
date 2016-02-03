@@ -1,4 +1,4 @@
-package experiment;
+package experiment.moostest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,6 +8,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
+
+import experiment.test.BaseTest;
+import experiment.test.LoginTest;
+import experiment.test.LogoutTest;
 
 public class MOOSExecuteOrderTest extends BaseTest {
 

@@ -1,4 +1,4 @@
-package experiment;
+package experiment.moostest.model;
 
 
 public class MOOSOrder {

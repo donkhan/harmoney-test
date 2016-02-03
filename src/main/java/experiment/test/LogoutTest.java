@@ -1,8 +1,9 @@
-package experiment;
+package experiment.test;
 
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
+
 
 
 public class LogoutTest extends BaseGETTest{

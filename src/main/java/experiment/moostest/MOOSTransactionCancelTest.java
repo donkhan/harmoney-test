@@ -7,13 +7,13 @@ import java.io.InputStreamReader;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 import experiment.test.BaseTest;
 import experiment.test.LoginTest;
 import experiment.test.LogoutTest;
 
-public class MOOSOrderCancelTest extends BaseTest{
+public class MOOSTransactionCancelTest extends BaseTest{
 	private String userName;
 	private String sessionId;
 	
@@ -25,7 +25,7 @@ public class MOOSOrderCancelTest extends BaseTest{
 		String sessionId = "";
 		try {
 			sessionId = loginTest.login();
-			MOOSOrderCancelTest ct = new MOOSOrderCancelTest(userName,sessionId);
+			MOOSTransactionCancelTest ct = new MOOSTransactionCancelTest(userName,sessionId);
 			ct.executeTransactions();
 			
 		} catch (Throwable e) {
@@ -42,24 +42,22 @@ public class MOOSOrderCancelTest extends BaseTest{
 		}
 	}
 	
-	public MOOSOrderCancelTest(String un,String sessionId){
+	public MOOSTransactionCancelTest(String un,String sessionId){
 		this.userName = un;
 		this.sessionId = sessionId;
 	}
 	
-	
 	@Override
 	public String getPayLoad() {
-		JSONArray payLoad = new JSONArray();
-		payLoad.put(304);
-		payLoad.put(303);
-		System.out.println("PayLoad " + payLoad.toString());
-		return payLoad.toString();
+		JSONObject obj =  new JSONObject();
+		obj.put("reason", "User cancelled Visit");
+		System.out.println(obj);
+		return obj.toString();
 	}
 
 	@Override
 	public String getURI() {
-		return "/harmoney2/moos/cancel-orders/Trichy"; 
+		return "/harmoney2/moose/cancel-transaction/Trichy/44/12"; 
 	}
 
 	@Override
