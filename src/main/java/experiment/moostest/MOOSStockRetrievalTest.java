@@ -47,6 +47,9 @@ public class MOOSStockRetrievalTest extends BaseGETTest{
 			stest.setURI("/harmoney2/moos/get-stocks/Trichy/USD");
 			stest.execute();
 			System.out.println("");
+			stest.setURI("/harmoney2/moos/get-stocks/Trichy/ALL");
+			stest.execute();
+			System.out.println("");
 			stest.setURI("/harmoney2/moos/get-stocks/Trichy/USE");
 			stest.execute();
 			System.out.println("");

@@ -73,7 +73,25 @@
   	<br>	
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSStockRetrievalTest.java> Test Program </a> 
 	<br><br>
-
+	
+	
+	<b> <u>Getting Stocks for given Branch and All Currencies </u> </b> <br> <br> 
+	URL : /harmoney2/moos/get-stocks/{branch-name}/ALL <br>
+	Example : /harmoney2/moos/get-stocks/Trichy/ALL  <br>
+	HTTP Method: GET <br>
+	Payload: None <br>
+	Sample Output : <br> <img src="img/AllStocksOutput.png">	 <br>
+     Error Code(s) : <br><br> 
+		<table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		</table>
+  	<br>	
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSStockRetrievalTest.java> Test Program </a> 
+	<br><br>
+	
 	 <b><u>Place Orders</u></b><br><br> 
 	 URL : /harmoney2/moos/place-orders<br>
 	 HTTP Method: POST <br>
