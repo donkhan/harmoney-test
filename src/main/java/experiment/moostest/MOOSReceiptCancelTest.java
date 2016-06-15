@@ -25,7 +25,7 @@ public class MOOSReceiptCancelTest extends BaseTest{
 		String sessionId = "";
 		try {
 			sessionId = loginTest.login();
-			MOOSTransactionCancelTest ct = new MOOSTransactionCancelTest(userName,sessionId);
+			MOOSReceiptCancelTest ct = new MOOSReceiptCancelTest(userName,sessionId);
 			ct.executeTransactions();
 			
 		} catch (Throwable e) {
@@ -52,7 +52,7 @@ public class MOOSReceiptCancelTest extends BaseTest{
 		JSONObject obj =  new JSONObject();
 		obj.put("reason", "User cancelled Visit");
 		obj.put("branch-name","Trichy");
-		obj.put("receipt-id", 44);
+		obj.put("receipt-id", 87);
 		System.out.println(obj.toString());
 		return obj.toString();
 	}
