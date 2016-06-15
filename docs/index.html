@@ -205,6 +205,7 @@
 	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSTransactionCancelTest.java> Test Program </a> 
 	<br> <br>
 	
+
 	<b> <u>Getting Customer's Transaction Info </u> </b> <br> <br> 
 	URL : /harmoney2/moos/customer/{customer-IcNo}/get-risk-profile <br>
 	Example : /harmoney2/moos/customer/IC114/get-risk-profile  <br>
@@ -212,6 +213,26 @@
 	Payload: None <br>
 	Sample Output : <br> <img src="img/CustomerTranEndPoint.png"> <br>
     <a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSCustomerTranTest.java> Test Program </a> 
+	<br>
+	<b> <u>Cancel Transaction by Receipt ID </u> </b> <br> <br> 
+	URL : /harmoney2/moos/harmoney2/cancel-transaction-by-receipt <br>
+	 HTTP Method: POST <br>
+	 Payload:  <br> <img src="img/CancelReceiptSchema.png">	 <br>
+	 Example: <br>  <img src="img/CancelReceiptRequest.png"> <br>
+	 Sample Output : <br><img src="img/CancelReceiptResponse.png"> <br>
+	  
+	 Error Code(s) : <br> 
+		<table>
+  		<tr><th>Code</th><th>Reason</th></tr>
+  		<tr><td>0</td><td>ALL_FINE</td></tr>
+  		<tr><td>1</td><td>BRANCH_NOT_FOUND</td></tr>
+  		<tr><td>7</td><td>UNKNOWN_ERROR</td></tr>
+  		<tr><td>9</td><td>ALREADY_DELETED</td></tr>
+	</table>
+	
+	<br>
+	<a href=https://github.com/donkhan/harmoney-test/blob/master/src/main/java/experiment/moostest/MOOSReceiptCancelTest.java> Test Program </a> 
+
 	<br><br>
 		
 	<b> <u>Things to care </u> </b> <br> 
