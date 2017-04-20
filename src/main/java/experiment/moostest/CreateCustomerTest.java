@@ -1,16 +1,16 @@
 package experiment.moostest;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStreamReader;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONObject;
 
 import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
-import experiment.moostest.model.MOOSOrder;
 import experiment.test.BaseTest;
 
 public class CreateCustomerTest extends BaseTest{
@@ -24,15 +24,24 @@ public class CreateCustomerTest extends BaseTest{
 	}
 
 	public static void main(String args[]){
-		String userName = "t";
-		String passWord = "1";
+		String userName = "sadmin";
+		String passWord = "A123456*";
 		
 		LoginTest loginTest = new LoginTest(userName,passWord);
 		String sessionId = "";
 		try {
 			sessionId = loginTest.login();
 			CreateCustomerTest dt = new CreateCustomerTest(userName,sessionId);
-			dt.print(dt.execute());
+			HttpResponse response = dt.execute();
+			BufferedReader rd = new BufferedReader(
+					new InputStreamReader(response.getEntity().getContent()));
+
+				StringBuffer result = new StringBuffer();
+				String line = "";
+				while ((line = rd.readLine()) != null) {
+					result.append(line);
+				}
+				System.out.println(result);
 			
 		} catch (Throwable e) {
 			e.printStackTrace();
