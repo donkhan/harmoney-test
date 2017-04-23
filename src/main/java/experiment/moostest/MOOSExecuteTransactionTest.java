@@ -20,7 +20,7 @@ public class MOOSExecuteTransactionTest extends BasePostTest{
 		list.add(new MOOSOrder("USD",10,1));
 		list.add(new MOOSOrder("GBP",10,5));
 		MOOSExecuteTransactionTest dt = new MOOSExecuteTransactionTest(list);
-		dt.executeTransactions();
+		dt.oneCycle();
 	}
 
 	public MOOSExecuteTransactionTest(List<MOOSOrder> transactions){
@@ -43,13 +43,6 @@ public class MOOSExecuteTransactionTest extends BasePostTest{
 		}
 		request.put("orders",atransactions);
 		return total;
-	}
-	
-	public void executeTransactions() throws ClientProtocolException, IOException{
-		HttpResponse response = super.execute();
-		System.out.println("Response Code : " 
-	                + response.getStatusLine().getStatusCode());
-		process(response);
 	}
 
 	@Override

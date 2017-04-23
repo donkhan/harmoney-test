@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,8 +33,8 @@ public class MOOSPlaceOrderTest extends BasePostTest{
 		list.add(new MOOSOrder("USD",10,1));
 		list.add(new MOOSOrder("GBP",10,5));
 		MOOSPlaceOrderTest dt = new MOOSPlaceOrderTest(list);
-		dt.setBranchName("Trichy");
-		dt.executeTransactions();
+		dt.setBranchName("MADURAI");
+		dt.oneCycle();
 		
 	}
 	public MOOSPlaceOrderTest(List<MOOSOrder> transactions){
@@ -65,15 +64,7 @@ public class MOOSPlaceOrderTest extends BasePostTest{
 		return total;
 	}
 	
-	public void executeTransactions() throws ClientProtocolException, IOException{
-		authenticate();
-		HttpResponse response = super.execute();
-		System.out.println("Response Code : " 
-	                + response.getStatusLine().getStatusCode());
-		process(response);
-		logout();
-	}
-
+	
 	@Override
 	public String getPayLoad() {
 		JSONObject payLoad = new JSONObject();

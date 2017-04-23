@@ -10,9 +10,6 @@ public class MOOSStockRetrievalTest extends BaseGETTest{
 	
 	private String uri;
 	
-	public MOOSStockRetrievalTest(){
-	}
-	
 	@Override
 	public String getURI() {
 		return uri;

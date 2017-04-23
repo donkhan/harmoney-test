@@ -2,7 +2,6 @@ package experiment.moostest;
 
 import java.io.IOException;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,10 +13,6 @@ public class MOOSOrderCancelTest extends BasePostTest{
 		MOOSOrderCancelTest ct = new MOOSOrderCancelTest();
 		ct.oneCycle();
 	}
-	
-	public MOOSOrderCancelTest(){
-	}
-	
 	
 	@Override
 	public String getPayLoad() {
@@ -34,12 +29,5 @@ public class MOOSOrderCancelTest extends BasePostTest{
 	@Override
 	public String getURI() {
 		return "/harmoney2/moos/cancel-orders"; 
-	}
-
-	public void executeTransactions() throws ClientProtocolException, IOException{
-		HttpResponse response = super.execute();
-		System.out.println("Response Code : " 
-	                + response.getStatusLine().getStatusCode());
-		process(response);
 	}
 }

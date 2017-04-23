@@ -12,10 +12,7 @@ public class MOOSReceiptCancelTest extends BasePostTest{
 		MOOSReceiptCancelTest ct = new MOOSReceiptCancelTest();
 		ct.oneCycle();
 	}
-	
-	public MOOSReceiptCancelTest(){
-	}
-	
+
 	@Override
 	public String getPayLoad() {
 		JSONObject obj =  new JSONObject();

@@ -1,7 +1,5 @@
 package experiment.moostest;
-
 import experiment.test.BaseGETTest;
-
 
 public class MOOSGETTest extends BaseGETTest{
 

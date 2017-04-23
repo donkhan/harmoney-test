@@ -9,12 +9,8 @@ import experiment.test.BasePostTest;
 
 public class CreateCustomerTest extends BasePostTest{
 	
-	public CreateCustomerTest(String userName, String passWord) {
-		super();
-	}
-
 	public static void main(String args[]) throws ClientProtocolException, IOException{
-		new CreateCustomerTest("t","1").executeAndPrint();
+		new CreateCustomerTest().executeAndPrint();
 	}
 	
 	@Override

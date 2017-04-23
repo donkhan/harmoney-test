@@ -7,10 +7,6 @@ public class MOOSCustomerTranTest extends BaseGETTest{
 	
 	private String uri;
 	
-	public MOOSCustomerTranTest(){
-		super();
-	}
-	
 	@Override
 	public String getURI() {
 		return uri;

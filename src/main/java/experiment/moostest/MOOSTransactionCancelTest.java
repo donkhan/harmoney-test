@@ -13,9 +13,6 @@ public class MOOSTransactionCancelTest extends BasePostTest{
 		ct.oneCycle();
 	}
 	
-	public MOOSTransactionCancelTest(){
-	}
-	
 	@Override
 	public String getPayLoad() {
 		JSONObject obj =  new JSONObject();
