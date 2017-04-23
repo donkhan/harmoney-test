@@ -7,30 +7,19 @@ import java.io.InputStreamReader;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpPost;
 import org.json.JSONObject;
 
-import experiment.test.BaseTest;
+import experiment.test.BasePostTest;
 
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BasePostTest{
 
-	
-	private String userName;
-	private String passWord;
-	
-	public LoginTest(String userName,String passWord){
-		this.userName = userName;
-		this.passWord = passWord;
-	}
-	
-	
 
 	@Override
 	public String getPayLoad() {
 		JSONObject user = new JSONObject();
-		user.accumulate("id",userName);
-		user.accumulate("password",passWord);
+		user.accumulate("id",getUserName());
+		user.accumulate("password",getPassWord());
 		return user.toString();
 	}
 
@@ -68,11 +57,9 @@ public class LoginTest extends BaseTest{
 		return "/harmoney2/sessionService/authenticate";
 	}
 
-
-
-	@Override
-	public void addExtraHeaders(HttpPost request) {
-		// TODO Auto-generated method stub
-		
+	public static void main(String args[]) throws ClientProtocolException, IOException{
+		LoginTest lt = new LoginTest();
+		System.out.println(lt.login());
+		lt.logout();
 	}
 }

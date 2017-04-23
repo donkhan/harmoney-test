@@ -7,30 +7,21 @@ import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import experiment.moneyboxtest.model.Transaction;
-import experiment.test.BaseTest;
+import experiment.test.BasePostTest;
 
-public class TransactionTest extends BaseTest{
+public class TransactionTest extends BasePostTest{
 	
 	private List<Transaction> transactions;
-	private String userName;
-	private String sessionId;
-	
 	public static void main(String args[]) throws ClientProtocolException, IOException{
 		
 	}
 	
-	public TransactionTest(List<Transaction> transactions,String userName,String sessionId){
+	public TransactionTest(List<Transaction> transactions,String sessionId){
 		this.transactions = transactions;
-		this.userName = userName;
-		this.sessionId = sessionId;
 	}
 	
 	private void setReceipt(JSONObject request){
@@ -113,13 +104,4 @@ public class TransactionTest extends BaseTest{
 	public String getURI() {
 		return "/harmoney2/tranReceiptCounters/tranReceiptCounter";
 	}
-
-	@Override
-	public void addExtraHeaders(HttpPost request) {
-		request.addHeader("X-userId",userName);
-		request.addHeader("Cookie","JSESSIONID="+sessionId);
-	}
-	
-	
-	
 }
