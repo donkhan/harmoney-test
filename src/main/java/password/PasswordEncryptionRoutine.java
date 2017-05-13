@@ -1,44 +1,48 @@
-package password;
+/**
+ * Created by kkhan on 13/05/17.
+ */
 
+
+import java.security.Key;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
+import javax.crypto.spec.*;
 
-/**
- * Created by kkhan on 13/05/17.
- */
+import java.io.*;
+import java.util.*;
+
 public class PasswordEncryptionRoutine {
-    static String encrypt(String password){
-	String key = "Bar12345Bar12345"; 
-        Key aesKey = new SecretKeySpec(key.getBytes(), "AES");
+
+    public static byte[] encrypt(String value) {
+        byte[] encrypted = null;
         try {
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, aesKey);
-            String encryptedPassWord = new String(cipher.doFinal(password.getBytes()));
-            return  encryptedPassWord;
-        }catch(NoSuchAlgorithmException nae){
-            nae.printStackTrace();
-        }catch(NoSuchPaddingException npe){
-            npe.printStackTrace();
-        } catch (BadPaddingException e) {
-            e.printStackTrace();
-        } catch (IllegalBlockSizeException e) {
-            e.printStackTrace();
-        } catch (InvalidKeyException e) {
-            e.printStackTrace();
+            byte[] raw = new byte[]{'T', 'h', 'i', 's', 'I', 's', 'A', 'S', 'e', 'c', 'r', 'e', 't', 'K', 'e', 'y'};
+            Key skeySpec = new SecretKeySpec(raw, "AES");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            byte[] iv = new byte[cipher.getBlockSize()];
+            IvParameterSpec ivParams = new IvParameterSpec(iv);
+            cipher.init(Cipher.ENCRYPT_MODE, skeySpec,ivParams);
+            encrypted  = cipher.doFinal(value.getBytes());
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        return "";
+        return encrypted;
     }
 
-    public static void main(String args[]){
-        if(args.length == 0){
-            System.err.println("Usage java password.PasswordEncryptionRoutine Password");
-        }
-        System.out.println(encrypt(args[0]));
+    
+    public static void main(String args[]) throws Exception{
+	if(args.length < 2){
+	    System.err.println("Usage password.PasswordEncryptionRoutine Password filename");
+	    return;
+	}
+        byte b[] = encrypt(args[0]);
+	String fileName = System.getProperty("user.dir") + "/" + fileName;
+        FileOutputStream fos = new FileOutputStream(fileName);
+        fos.write(b);
+        fos.close();
+        System.out.println("Password is stored in " + fileName + ". Copy it to conf/cheries folder in MAPI and restart it");
+
     }
 }
