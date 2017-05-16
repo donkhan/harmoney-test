@@ -1,17 +1,18 @@
+package password;
+
+import java.io.FileOutputStream;
+
 /**
  * Created by kkhan on 13/05/17.
+ * 
  */
 
 
 import java.security.Key;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.*;
 
-import java.io.*;
-import java.util.*;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public class PasswordEncryptionRoutine {
 
@@ -33,16 +34,16 @@ public class PasswordEncryptionRoutine {
 
     
     public static void main(String args[]) throws Exception{
-	if(args.length < 2){
-	    System.err.println("Usage password.PasswordEncryptionRoutine Password filename");
-	    return;
-	}
+    	if(args.length < 2){
+    		System.err.println("Usage password.PasswordEncryptionRoutine Password filename");
+    		return;
+    	}
         byte b[] = encrypt(args[0]);
-	String fileName = System.getProperty("user.dir") + "/" + fileName;
+        String fileName = System.getProperty("user.dir") + "/" + args[1];
         FileOutputStream fos = new FileOutputStream(fileName);
         fos.write(b);
         fos.close();
-        System.out.println("Password is stored in " + fileName + ". Copy it to conf/cheries folder in MAPI and restart it");
+        System.out.println("Password is stored in " + fileName + " . Copy it to conf/cheries folder in MAPI and restart it");
 
     }
 }
