@@ -43,7 +43,7 @@ public class PasswordEncryptionRoutine {
         FileOutputStream fos = new FileOutputStream(fileName);
         fos.write(b);
         fos.close();
-        System.out.println("Password is stored in " + fileName + " . Copy it to conf/cheries folder in MAPI and restart it");
+        System.out.println("Password is stored in " + fileName + " . Copy it to conf/cherries folder in MAPI and restart it");
 
     }
 }
