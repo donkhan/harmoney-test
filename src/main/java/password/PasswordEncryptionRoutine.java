@@ -1,5 +1,6 @@
 package password;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -74,8 +75,7 @@ public class PasswordEncryptionRoutine {
     }
 
     
-    private static void createKeys() throws FileNotFoundException, IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-    	 String fileName = System.getProperty("user.dir") + "/conf/cherries/cherries.conf";
+    private static void createKeys(String fileName) throws FileNotFoundException, IOException, InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
          Properties properties = new Properties();
          properties.load(new FileInputStream(fileName));
          Iterator<Object> keys = properties.keySet().iterator();
@@ -88,8 +88,14 @@ public class PasswordEncryptionRoutine {
     }
     
     public static void main(String args[]) throws Exception{
+    	if(args.length != 1){
+    		System.out.println("Usage java -classpath <JarFile> password.PasswordEncryptionRoutine file contains password as key value pair");
+    		return;
+    	}
+    	File f = new File(System.getProperty("user.dir") + "/conf/cherries");
+    	f.mkdirs();
     	SaltCreationRoutine.genKey();
-    	createKeys();
+    	createKeys(args[0]);
     	System.out.println("Copy all the files under " + System.getProperty("user.dir") + "/conf/cherries/" + " to mapi/conf/cherries and restart MAPI");
     }
 }
