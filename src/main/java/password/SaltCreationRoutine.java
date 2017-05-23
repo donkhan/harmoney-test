@@ -9,18 +9,17 @@ import javax.crypto.SecretKey;
 
 public class SaltCreationRoutine {
 	
-	public static void genKey() throws NoSuchAlgorithmException, IOException{
+	public static void genKey(String saltFile) throws NoSuchAlgorithmException, IOException{
 		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
 		keyGen.init(256); 
 		SecretKey secretKey = keyGen.generateKey();
-		FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/conf/cherries/salt");
+		FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/conf/cherries/" + saltFile);
 		fos.write(secretKey.getEncoded());
 		fos.close();
-		System.out.println("Please copy " + System.getProperty("user.dir") + "/conf/cherries/salt"  + " under mapi/conf");
 	}
 	
 	public static void main(String args[]) throws NoSuchAlgorithmException, IOException{
-		genKey();
+		genKey("TEST.salt");
 	}
 	
 }

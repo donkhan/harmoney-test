@@ -31,7 +31,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class PasswordEncryptionRoutine {
 	
 	public static void encrypt(String password,String fileName) throws IOException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException {
-        Key skeySpec = new SecretKeySpec(readKey(), "AES");
+        Key skeySpec = new SecretKeySpec(readKey(fileName+".salt"), "AES");
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         byte[] iv = new byte[cipher.getBlockSize()];
         IvParameterSpec ivParams = new IvParameterSpec(iv);
@@ -43,8 +43,8 @@ public class PasswordEncryptionRoutine {
         fos.close();
     }
 	
-	private static byte[] readKey() throws IOException{
-		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/conf/cherries/salt");
+	private static byte[] readKey(String key) throws IOException{
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "/conf/cherries/" + key);
         byte raw[] = new byte[16];
         fis.read(raw);
         fis.close();
@@ -52,8 +52,8 @@ public class PasswordEncryptionRoutine {
 	}
 	
     static String decrypt(String fileName) throws IOException, NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException{
-        fileName = System.getProperty("user.dir") + "/conf/cherries/" + fileName;
-        FileInputStream fis = new FileInputStream(fileName);
+        String xFileName = System.getProperty("user.dir") + "/conf/cherries/" + fileName;
+        FileInputStream fis = new FileInputStream(xFileName);
         List<Integer> list = new ArrayList<Integer>();
         int v = -1;
         while((v = fis.read()) != -1){
@@ -64,7 +64,7 @@ public class PasswordEncryptionRoutine {
         	c[i] = list.get(i).byteValue();
         }
         fis.close();
-        Key key = new SecretKeySpec(readKey(), "AES");
+        Key key = new SecretKeySpec(readKey(fileName + ".salt"), "AES");
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         byte[] ivByte = new byte[cipher.getBlockSize()];
         IvParameterSpec ivParamsSpec = new IvParameterSpec(ivByte);
@@ -82,6 +82,8 @@ public class PasswordEncryptionRoutine {
          while(keys.hasNext()){
         	 String key = (String)keys.next();
         	 String password = properties.getProperty(key);
+             System.out.println("Key " + key + " Password " + password);
+             SaltCreationRoutine.genKey(key + ".salt");
         	 encrypt(password,key);
         	 System.out.println(key + " " + decrypt(key));
          }
@@ -94,7 +96,7 @@ public class PasswordEncryptionRoutine {
     	}
     	File f = new File(System.getProperty("user.dir") + "/conf/cherries");
     	f.mkdirs();
-    	SaltCreationRoutine.genKey();
+
     	createKeys(args[0]);
     	System.out.println("Copy all the files under " + System.getProperty("user.dir") + "/conf/cherries/" + " to mapi/conf/cherries and restart MAPI");
     }
