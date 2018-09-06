@@ -10,10 +10,10 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
 import org.json.JSONObject;
 
-import experiment.test.BaseTest;
+import experiment.test.BasePOSTTest;
 
 
-public class LoginTest extends BaseTest{
+public class LoginTest extends BasePOSTTest {
 
 	
 	private String userName;

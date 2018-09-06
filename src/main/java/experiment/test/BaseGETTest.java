@@ -8,19 +8,8 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-public abstract class BaseGETTest {
+public abstract class BaseGETTest  extends BaseTest{
 
-
-	private String server = "101.99.73.46";
-	private int port = 9181;
-
-	protected String getServer() {
-		return server;
-	}
-
-	protected int getPort() {
-		return port;
-	}
 
 	public HttpResponse execute() throws ClientProtocolException,
 			IOException {

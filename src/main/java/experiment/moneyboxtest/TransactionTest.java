@@ -7,17 +7,14 @@ import java.util.List;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import experiment.moneyboxtest.model.Transaction;
-import experiment.test.BaseTest;
+import experiment.test.BasePOSTTest;
 
-public class TransactionTest extends BaseTest{
+public class TransactionTest extends BasePOSTTest {
 	
 	private List<Transaction> transactions;
 	private String userName;

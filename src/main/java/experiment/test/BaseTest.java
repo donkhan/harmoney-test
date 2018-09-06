@@ -1,46 +1,17 @@
 package experiment.test;
 
-import java.io.IOException;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
+/**
+ * Created by kkhan on 06/09/18.
+ */
 public abstract class BaseTest {
+    private String server = "101.99.73.46";
+    private int port = 9181;
 
-	private String server = "101.99.73.46";
-	private int port = 9181;
-	
-	protected String getServer(){
-		return server;
-	}
-	
-	protected int getPort(){
-		return port;
-	}
-	
-	public HttpResponse execute() throws ClientProtocolException, IOException{
-		HttpClient client = new DefaultHttpClient();
-		String url = "http://"+getServer()+":"+ getPort() + getURI();
-		HttpPost request = new HttpPost(url);
+    protected String getServer(){
+        return server;
+    }
 
-		
-		request.addHeader("Content-Type","application/json;charset=UTF-8");
-		request.addHeader("User-Agent", "STANDALONE_CODE");
-		request.addHeader("Accept","application/json");
-		addExtraHeaders(request);
-		
-		String content = getPayLoad();
-		
-		request.setEntity(new StringEntity(content));
-		HttpResponse response = client.execute(request);
-		return response;
-	}
-	
-	public abstract String getPayLoad();
-	public abstract String getURI();
-	public abstract void addExtraHeaders(HttpPost request);
+    protected int getPort(){
+        return port;
+    }
 }

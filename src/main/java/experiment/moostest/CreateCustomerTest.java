@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
-import experiment.test.BaseTest;
+import experiment.test.BasePOSTTest;
 
-public class CreateCustomerTest extends BaseTest{
+public class CreateCustomerTest extends BasePOSTTest {
 
 	String userName;
 	String sessionId;

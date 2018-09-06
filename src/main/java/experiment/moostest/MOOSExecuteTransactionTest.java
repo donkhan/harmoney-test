@@ -15,9 +15,9 @@ import org.json.JSONObject;
 import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
 import experiment.moostest.model.MOOSOrder;
-import experiment.test.BaseTest;
+import experiment.test.BasePOSTTest;
 
-public class MOOSExecuteTransactionTest extends BaseTest{
+public class MOOSExecuteTransactionTest extends BasePOSTTest {
 	
 	private List<MOOSOrder> transactions;
 	private String userName;
