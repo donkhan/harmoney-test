@@ -34,9 +34,11 @@ public class FindCustomerTest extends BaseGETTest{
 	
 	}
 
+	private String icNo = "920519016204";
+
 	@Override
 	public String getURI() {
-		return "/harmoney2/customers/findByIdentificationNumber/IC110";
+		return "/harmoney2/customers/findByIdentificationNumber/" + icNo;
 	}
 
 	@Override
