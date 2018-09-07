@@ -25,7 +25,7 @@ public class FindCustomerTest extends BaseGETTest{
 			FindCustomerTest stest = new FindCustomerTest(userName,sessionId);
 			long l = System.currentTimeMillis();
 			stest.execute();
-			System.out.println("Time Taken " + (l - System.currentTimeMillis()) + " msecs");
+			System.out.println("Time Taken " + ( System.currentTimeMillis()-l) + " msecs");
 			LogoutTest logoutTest = new LogoutTest(userName,sessionId);
 			logoutTest.execute();
 			
