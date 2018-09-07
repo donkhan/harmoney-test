@@ -15,26 +15,23 @@ import experiment.test.BasePOSTTest;
 
 public class LoginTest extends BasePOSTTest {
 
-	
-	private String userName;
-	private String passWord;
-	
-	public LoginTest(String userName,String passWord){
-		this.userName = userName;
-		this.passWord = passWord;
+	public LoginTest(){
+
 	}
-	
-	
+
+	public LoginTest(String userName,String passWord){
+		setUserName(userName);
+		setPassWord(passWord);
+	}
 
 	@Override
 	public String getPayLoad() {
 		JSONObject user = new JSONObject();
-		user.accumulate("id",userName);
-		user.accumulate("password",passWord);
+		user.accumulate("id",getUserName());
+		user.accumulate("password",getPassWord());
 		return user.toString();
 	}
 
-	
 	public String login() throws ClientProtocolException, IOException{
 		HttpResponse response = execute();
 		System.out.println("Response Code : " 
