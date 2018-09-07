@@ -1,8 +1,12 @@
 package experiment.authentication;
 
 import java.io.IOException;
+
 import org.apache.http.HttpResponse;
+
 import experiment.test.BaseGETTest;
+
+
 
 public class LogoutTest extends BaseGETTest{
 
@@ -11,16 +15,13 @@ public class LogoutTest extends BaseGETTest{
 		return "/harmoney2/sessionService/logout";
 	}
 	
-	public LogoutTest(String sessionId){
-		super(sessionId);
-	}
-
 	public LogoutTest(String userName,String sessionId){
-		super(sessionId);
-		setUserName(userName);
+		super(userName,sessionId);
 	}
 
 	public void print(HttpResponse response) throws IOException{
 		System.out.println("\nLogged Out");
 	}
+
+	
 }
