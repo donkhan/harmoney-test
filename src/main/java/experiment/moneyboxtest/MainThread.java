@@ -30,9 +30,5 @@ public class MainThread extends Thread implements Runnable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
-
-	
 }
