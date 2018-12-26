@@ -12,6 +12,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import experiment.authentication.LoginTest;
 import experiment.moneyboxtest.model.Transaction;
 import experiment.test.BasePOSTTest;
 
@@ -22,17 +23,14 @@ public class ValidateRateTest extends BasePOSTTest {
 	private String sessionId;
 	
 	public static void main(String args[]) throws ClientProtocolException, IOException{
-		String[] userNames = new String[]{"mt"};
-		String[] passWords = new String[]{"1"};
-		Transaction[] transactions = new Transaction[]{
-			new Transaction("B",52,"USD",1,0,1),
-		};
-		for(int i = 0;i<userNames.length;i++){
-			List<Transaction> l = new ArrayList<Transaction>();
-			l.add(transactions[i]);
-			MainThread mt = new MainThread(userNames[i],passWords[i],l);
-			mt.start();
-		}
+		String userName = "mt";
+		String passWord = "";
+		LoginTest test = new LoginTest(userName,passWord);
+		String sessionId = test.login();
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("B",52,"USD",1,0,1));
+		ValidateRateTest vrt = new ValidateRateTest(l,userName,sessionId);
+		vrt.execute();
 	}
 	
 	public ValidateRateTest(List<Transaction> transactions,String userName,String sessionId){
