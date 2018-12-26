@@ -30,7 +30,7 @@ public class ValidateRateTest extends BasePOSTTest {
 		List<Transaction> l = new ArrayList<Transaction>();
 		l.add(new Transaction("B",52,"USD",1,0,1));
 		ValidateRateTest vrt = new ValidateRateTest(l,userName,sessionId);
-		vrt.execute();
+		vrt.executeTransactions();
 	}
 	
 	public ValidateRateTest(List<Transaction> transactions,String userName,String sessionId){
