@@ -23,7 +23,7 @@ public class ValidateRateTest extends BasePOSTTest {
 	private String userName;
 	private String sessionId;
 
-	private void testProper(String userName,String sessionId) throws ClientProtocolException,IOException{
+	private void testProperBuy(String userName,String sessionId) throws ClientProtocolException,IOException{
 		List<Transaction> l = new ArrayList<Transaction>();
 		l.add(new Transaction("B",25419,"GBP",1,5.4,1));
 		ValidateRateTest vrt = new ValidateRateTest();
@@ -33,7 +33,17 @@ public class ValidateRateTest extends BasePOSTTest {
 		vrt.executeTransactions();
 	}
 
-	private void testRateZero(String userName,String sessionId) throws ClientProtocolException,IOException{
+	private void testLowerBuy(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("B",25419,"GBP",1,1,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+	private void testRateZeroBuy(String userName,String sessionId) throws ClientProtocolException,IOException{
 		List<Transaction> l = new ArrayList<Transaction>();
 		l.add(new Transaction("B",25419,"GBP",1,0,1));
 		ValidateRateTest vrt = new ValidateRateTest();
@@ -43,9 +53,50 @@ public class ValidateRateTest extends BasePOSTTest {
 		vrt.executeTransactions();
 	}
 
-	private void testRateExceed(String userName,String sessionId) throws ClientProtocolException,IOException{
+	private void testRateExceedBuy(String userName,String sessionId) throws ClientProtocolException,IOException{
 		List<Transaction> l = new ArrayList<Transaction>();
 		l.add(new Transaction("B",25419,"GBP",1,6,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+
+	private void testProperSell(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("S",25419,"GBP",1,5.7,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+	private void testLowerSell(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("S",25419,"GBP",1,5.2,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+	private void testRateZeroSell(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("S",25419,"GBP",1,0,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+	private void testRateExceedSell(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("S",25419,"GBP",1,2,1));
 		ValidateRateTest vrt = new ValidateRateTest();
 		vrt.transactions = l;
 		vrt.userName = userName;
@@ -60,9 +111,15 @@ public class ValidateRateTest extends BasePOSTTest {
 		String sessionId = login.login();
 		ValidateRateTest vrt = new ValidateRateTest();
 
-		vrt.testProper(userName,sessionId);
-		vrt.testRateZero(userName,sessionId);
-		vrt.testRateExceed(userName,sessionId);
+		vrt.testProperBuy(userName,sessionId);
+		vrt.testRateZeroBuy(userName,sessionId);
+		vrt.testLowerBuy(userName,sessionId);
+		vrt.testRateExceedBuy(userName,sessionId);
+
+		vrt.testProperSell(userName,sessionId);
+		vrt.testRateZeroSell(userName,sessionId);
+		vrt.testLowerSell(userName,sessionId);
+		vrt.testRateExceedSell(userName,sessionId);
 
 		LogoutTest logout = new LogoutTest(userName,sessionId);
 		logout.execute();
