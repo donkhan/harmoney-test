@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import experiment.authentication.LogoutTest;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
@@ -21,23 +22,57 @@ public class ValidateRateTest extends BasePOSTTest {
 	private List<Transaction> transactions;
 	private String userName;
 	private String sessionId;
-	
-	public static void main(String args[]) throws ClientProtocolException, IOException{
-		String userName = "mt";
-		String passWord = "";
-		LoginTest test = new LoginTest(userName,passWord);
-		String sessionId = test.login();
+
+	private void testProper(String userName,String sessionId) throws ClientProtocolException,IOException{
 		List<Transaction> l = new ArrayList<Transaction>();
-		l.add(new Transaction("B",52,"USD",1,0,1));
-		ValidateRateTest vrt = new ValidateRateTest(l,userName,sessionId);
+		l.add(new Transaction("B",25419,"GBP",1,5.4,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
 		vrt.executeTransactions();
 	}
-	
-	public ValidateRateTest(List<Transaction> transactions,String userName,String sessionId){
-		this.transactions = transactions;
-		this.userName = userName;
-		this.sessionId = sessionId;
+
+	private void testRateZero(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("B",25419,"GBP",1,0,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
 	}
+
+	private void testRateExceed(String userName,String sessionId) throws ClientProtocolException,IOException{
+		List<Transaction> l = new ArrayList<Transaction>();
+		l.add(new Transaction("B",25419,"GBP",1,6,1));
+		ValidateRateTest vrt = new ValidateRateTest();
+		vrt.transactions = l;
+		vrt.userName = userName;
+		vrt.sessionId = sessionId;
+		vrt.executeTransactions();
+	}
+
+	public static void main(String args[]) throws ClientProtocolException, IOException{
+		String userName = "teller";
+		String passWord = "A123456*";
+		LoginTest login = new LoginTest(userName,passWord);
+		String sessionId = login.login();
+		ValidateRateTest vrt = new ValidateRateTest();
+
+		vrt.testProper(userName,sessionId);
+		vrt.testRateZero(userName,sessionId);
+		vrt.testRateExceed(userName,sessionId);
+
+		LogoutTest logout = new LogoutTest(userName,sessionId);
+		logout.execute();
+	}
+	
+	public ValidateRateTest() {
+	}
+
+
+
 	
 	private void setReceipt(JSONObject request){
 		double t = setTransactions(request);
