@@ -11,8 +11,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 public abstract class BasePOSTTest extends BaseTest{
 
-
-	
 	public HttpResponse execute() throws ClientProtocolException, IOException{
 		HttpClient client = new DefaultHttpClient();
 		String url = "http://"+getServer()+":"+ getPort() + getURI();
