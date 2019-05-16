@@ -20,9 +20,9 @@ public abstract class BaseFileUploadTest extends BaseTest {
         this.sessionId = sessionId;
     }
 
-    private void sendFile(String fieldName, File uploadFile, URL url)
+    private void sendFile( File uploadFile, URL url)
             throws IOException {
-        System.out.println("Send File: Field Name " + fieldName + " File " + uploadFile.getAbsolutePath() + " URL " + url.toExternalForm());
+        System.out.println("Send File " + uploadFile.getName() + " URL " + url.toExternalForm());
         String charset = "UTF-8";
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         httpConn.setUseCaches(false);
@@ -32,24 +32,25 @@ public abstract class BaseFileUploadTest extends BaseTest {
                 "multipart/form-data; boundary=" + boundary);
         httpConn.setRequestProperty("User-Agent", "CodeJava Agent");
         httpConn.setRequestProperty("Test", "Bonjour");
-        httpConn.setRequestMethod("Accept");
+        //httpConn.setRequestMethod("Accept");
         System.out.println("User Name " + userName + " JSESSION ID " + sessionId);
         httpConn.setRequestProperty("X-userId",userName);
         httpConn.setRequestProperty("Cookie","JSESSIONID="+sessionId);
-        System.out.println("Request Headers ar set");
+        System.out.println("Request Headers are set");
         OutputStream outputStream = httpConn.getOutputStream();
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(outputStream, charset), true);
 
         String fileName = uploadFile.getName();
         writer.append("--" + boundary).append(LINE_FEED);
         writer.append(
-                "Content-Disposition: form-data; name=\"" + fieldName
+                "Content-Disposition: form-data; name=\"" + "image"
                         + "\"; filename=\"" + fileName + "\"")
                 .append(LINE_FEED);
         writer.append(
                 "Content-Type: "
                         + URLConnection.guessContentTypeFromName(fileName))
                 .append(LINE_FEED);
+        writer.append("Content-Length:" + uploadFile.length());
         writer.append("Content-Transfer-Encoding: binary").append(LINE_FEED);
         writer.append(LINE_FEED);
         writer.flush();
@@ -67,7 +68,7 @@ public abstract class BaseFileUploadTest extends BaseTest {
         writer.flush();
         System.out.println("File is flushed");
         outputStream.close();
-        httpConn.disconnect();
+       // httpConn.disconnect();
 
     }
 
@@ -78,6 +79,6 @@ public abstract class BaseFileUploadTest extends BaseTest {
         String requestURL = "http://" + getServer() + ":" + getPort() + getURI();
         URL url = new URL(requestURL);
         System.out.println("URL is " + url);
-        sendFile("File",new File("/tmp/a.jpg"),url);
+        sendFile(new File("/tmp/a.jpg   "),url);
     }
 }

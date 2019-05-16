@@ -4,8 +4,8 @@ package experiment.test;
  * Created by kkhan on 06/09/18.
  */
 public abstract class BaseTest {
-    private String server = "101.99.73.46";
-    private int port = 9181;
+    private String server = "210.19.94.136";
+    private int port = 8181;
 
     protected String getServer(){
         return server;

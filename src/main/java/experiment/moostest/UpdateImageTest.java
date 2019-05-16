@@ -13,7 +13,7 @@ public class UpdateImageTest extends BaseFileUploadTest {
 
 
     public String getURI() {
-        String id = "1234";
+        long id = 1176;
         return "/harmoney2/customers/customer/" + id + "/icFrontImage";
     }
 
@@ -22,9 +22,9 @@ public class UpdateImageTest extends BaseFileUploadTest {
     }
 
     public static void main(String args[]) {
-        String userName = "sadmin";
+        String userName = "munmin2000";
         String passWord = "A123456*";
-        System.out.println("Started P....");
+        System.out.println("Started ....");
         LoginTest loginTest = new LoginTest(userName, passWord);
         String sessionId = "";
         try {
