@@ -2,9 +2,7 @@ package experiment.moostest;
 
 import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
-import experiment.test.BasePUTTest;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpPost;
+import experiment.test.BaseTest;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -14,23 +12,12 @@ import java.net.URLConnection;
 /**
  * Created by kkhan on 15/05/19.
  */
-public class UpdateImageTest extends BasePUTTest {
+public class UpdateImageTest extends BaseTest {
 
-    @Override
-    public String getPayLoad() {
-        return null;
-    }
 
-    @Override
     public String getURI() {
         String id = "1234";
         return "/harmoney2/customers/customer/" + id + "/icFrontImage";
-    }
-
-    @Override
-    public void addExtraHeaders(HttpPost request) {
-        request.addHeader("X-userId",userName);
-        request.addHeader("Cookie","JSESSIONID="+sessionId);
     }
 
     String userName;
@@ -44,7 +31,7 @@ public class UpdateImageTest extends BasePUTTest {
     public static void main(String args[]){
         String userName = "sadmin";
         String passWord = "A123456*";
-        System.out.println("Started....");
+        System.out.println("Started P....");
         LoginTest loginTest = new LoginTest(userName,passWord);
         String sessionId = "";
         try {
@@ -58,9 +45,7 @@ public class UpdateImageTest extends BasePUTTest {
             LogoutTest logout = new LogoutTest(userName,sessionId);
             try {
                 logout.execute();
-            } catch (ClientProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
+            }  catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -69,7 +54,7 @@ public class UpdateImageTest extends BasePUTTest {
     private final String boundary = "===" + System.currentTimeMillis() + "===";;
     private static final String LINE_FEED = "\r\n";
 
-    public void execute() throws ClientProtocolException, IOException {
+    public void execute() throws IOException {
         String requestURL = "http://" + getServer() + ":" + getPort() + getURI();
         URL url = new URL(requestURL);
         System.out.println("URL is " + url);
@@ -127,5 +112,7 @@ public class UpdateImageTest extends BasePUTTest {
         httpConn.disconnect();
 
     }
+
+
 
 }
