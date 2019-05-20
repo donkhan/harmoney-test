@@ -4,7 +4,7 @@ import experiment.authentication.LoginTest;
 import experiment.authentication.LogoutTest;
 import experiment.test.BaseFileUploadTest;
 
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by kkhan on 15/05/19.
@@ -31,7 +31,7 @@ public class UpdateImageTest extends BaseFileUploadTest {
             sessionId = loginTest.login();
             System.out.println("Logged In with session Id " + sessionId);
             UpdateImageTest dt = new UpdateImageTest(userName, sessionId);
-            dt.execute();
+            dt.execute(new File("/tmp/a.jpg"));
         } catch (Throwable e) {
             e.printStackTrace();
         } finally {

@@ -72,13 +72,13 @@ public abstract class BaseFileUploadTest extends BaseTest {
 
     }
 
-    private final String boundary = "===" + System.currentTimeMillis() + "===";;
+    private final String boundary = "===" + System.currentTimeMillis() + "===";
     private static final String LINE_FEED = "\r\n";
 
-    public void execute() throws IOException {
+    public void execute(File file) throws IOException {
         String requestURL = "http://" + getServer() + ":" + getPort() + getURI();
         URL url = new URL(requestURL);
         System.out.println("URL is " + url);
-        sendFile(new File("/tmp/a.jpg   "),url);
+        sendFile(file,url);
     }
 }
